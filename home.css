@@ -35,3 +35,35 @@ html {
 }
 
 
+.navbar {
+	background-color: #76ccbf;
+	border: none;
+}
+
+.nav .navbar-nav a {
+	color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+	color: black;
+	background-color: #59a398;
+}
+
+.navbar-inverse .navbar-brand {
+	color: white;
+}
+
+.navbar-inverse .navbar-brand:hover {
+	color: black;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+	color: black;
+	background-color: transparent;
+}
+
+
