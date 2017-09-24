@@ -1,6 +1,37 @@
+html {
+	display:inline-block;
+}
+
 #sm {
-	height: 100vh;
+  height: 20vh;
 	border: 3px solid black;
+}
+
+#top {
+	background: #85adad; 
+	margin: 0;
+	text-align: center;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	margin-bottom: 0px;
+}
+
+#stock {
+	white-space:collapse;
+	background: #dee4ed;
+	border:2px solid black;
+	height: 7vh;
+}
+
+.jumbotron h1 {
+	letter-spacing: 2px;
+	font-size: 10vh;
+}
+
+#user {
+	height: 100vh;
+	background: #c8cace;
+	margin-right: 10vh;
 }
 
 
