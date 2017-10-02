@@ -14,92 +14,104 @@
 </head>
 <body style="background: #e0ebeb">
 
-<div class="jumbotron" id="top">
-  <h1> <img src="leftflex.png" height="100px" width="120px"> FLEXFEED <img src="rightflex.png" height="100px" width="100px"></h1>
+<div id="top">
+  <h1> <img src="leftflex.png" style="width:10vh; height:10vh;"> FLEXFEED<img src="rightflex.png" style="width:10vh; height: 10vh"></h1>
 </div>
 
 
-<nav class="navbar navbar-inverse" style="padding-bottom: 0px;">
+<nav class="navbar navbar-inverse" id="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">FlexFeed</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Stuff</a></li>
-      <li><a href="#">Stuff</a></li>
-      <li><a href="#">Stuff</a></li>
+      <li><a href="#">Discover</a></li>
+      <li><a href="#">Groups</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Log Out</a></li>
     </ul>
   </div>
 </nav>
 
-
-
-<div class="container" style="padding-bottom: 2vh; width: 100%;">
-	<div class="row">
-		<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-  	<div id="stock" class="col-sm-1 text-center">
-  		<p> STOCKS </p>	
-  	</div>
-	</div>
+<div class="stockmenu">
+  <div>Apple<br> 154.12 <img src="red.png"></div>
+  <div>Tesla<br> 341.10 <img src="green.png"></div>
+  <div>Microsoft<br> 74.49 <img src="green.png"></div>
+  <div>Mcdonalds<br> 156.68 <img src="red.png"></div>
+  <div>BestBuy<br> 59.96 <img src="red.png"></div>
+  <div>Nike<br> 51.58 <img src="red.png"></div>
+  <div>Chipotle<br> 307.83 <img src="green.png"></div>
+  <div>Netflix<br> 181.35 <img src="red.png"></div>
+  <div>HP<br> 19.96 <img src="green.png"></div>
+  <div>Adidas<br> 191.40 <img src="red.png"></div>
+  <div>Target<br> 59.01 <img src="red.png"></div>
+  <div>Walmart<br> 78.14 <img src="green.png"></div>
+  <div>Yelp<br> 43.30 <img src="red.png"></div>
+  <div>Facebook<br> 170.00 <img src="green.png"></div>
+  <div>Twitter<br> 16.87 <img src="red.png"></div>
+  <div>Google<br> 973.72 <img src="green.png"></div>
+  <div>Kohls<br> 45.65 <img src="red.png"></div>
+  <div>UnderArmour<br> 16.48 <img src="red.png"></div>
+  <div>NewBalance<br> 24.50 <img src="green.png"></div>
 </div>
 
 
-<div class="container">
-  <div class="row" style="width:100%">
+<div class="container-fluid">
+  <div class="row" >
   	<div class="col-sm-3" id="user">
-      <h3> User Info </h3>
-      <p>STUFF</p>
-      <p>STUFF</p>
-      <p>STUFF</p>
-      <p>STUFF</p>
+      <h3> Tim Richards </h3>
+      <p>Current Group: <strong> Auto </strong></p>
+      <div class="container">                                          
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Groups
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Social</a></li>
+            <li><a href="#">Auto</a></li>
+            <li><a href="#">Tech</a></li>
+            <li><a href="#">Clothing</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-8 text-center" id="sm" style="background: #336699;">
-      <h3>Facebook</h3>
-      <p>STUFF</p>
-    </div>
-    <div class="col-sm-8 text-center" id="sm" style="background: #8cb3d9;">
-      <h3>Twitter</h3>
-      <p>STUFF</p>
-    </div>
-    <div class="col-sm-8 text-center" id="sm" style="background: #ded1c1;">
-      <h3>Instagram</h3>        
-      <p>STUFF</p>
+    <div class="col-sm-6" id="sm">
+      <div class="panel panel-default" style="background: #e0ebeb;">
+        
+        <div class="panel-heading" id="postHead" style="background: #7ba8c6"> 
+          <p> <img src='fb.png' style="height: 7vh; width:7vh"> Tesla </p>
+        </div>
+        <div class="panel-body text-center" id="postBody" style="background: #cce7f9">
+          <p> Solar + Storage now powering a sustainable school in Queensland, Australia </p>
+          <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ftesla%2Fvideos%2F10155617187772801%2F&show_text=1&width=560" width="560" height="568" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+        </div>
+
+        <div class="panel-heading" id="postHead" style="background: #bbd9ed">
+          <p><img src='twt.png' style="height: 7vh; width:7vh"> Tesla </p>
+        </div>
+        <div class="panel-body text-center" id="postBody" style="background: #e5f3fc">
+          <p id="socialBody"></p>
+          <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We poured our heart into the car. Hope you love it. <a href="https://t.co/DZOgQUfENo">https://t.co/DZOgQUfENo</a></p>&mdash; Elon Musk (@elonmusk) <a href="http://twitter.com/elonmusk/status/892545286748258305?ref_src=twsrc%5Etfw">August 2, 2017</a></blockquote>
+          <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+
+
+
+        <div class="panel-heading" id="postHead" style="background: #ded1c1">
+          <p><img src='ig.png' style="height: 7vh; width:7vh"> Tesla </p>
+        </div>
+        <div class="panel-body text-center" id="postBody" style="background: #f9efd6">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BYBj-1fhch_/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">One wheel to rule them all</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by Tesla (@teslamotors) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-08-20T17:43:22+00:00">Aug 20, 2017 at 10:43am PDT</time></p></div></blockquote>
+           <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
+
 
 </body>
 </html>
