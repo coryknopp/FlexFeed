@@ -1,6 +1,8 @@
 html {
 	display:inline-block;
 	min-height: 40vh;
+	min-width: 1000px; 
+  	max-width: 1400px;
 }
 
 h1 {
