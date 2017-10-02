@@ -1,0 +1,106 @@
+html {
+	display:inline-block;
+	min-height: 40vh;
+}
+
+h1 {
+	letter-spacing: 7vh;
+	font-weight: bold;
+	font-size: 7vh;
+}
+
+#top {
+	background: #85adad; 
+	margin: 0;
+	text-align: center;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	margin-bottom: 0px;
+}
+
+#sm {
+	overflow-y: scroll;
+	height: 71vh;
+}
+
+#navbar {
+	margin: 0px auto;
+	font-size: 2vh;
+}
+
+h3 {
+	padding-bottom: 5px;
+	border-bottom: 2px solid black;
+}
+
+#user {
+	margin-top: 5vh;
+	margin-left: 5vh;
+	height: 30vh;
+	border: 1px solid black;
+	width: 30vh auto;
+	background: #c8cace;
+	margin-right: 10vh;
+	overflow: hidden;
+	border-radius: 25px;
+	font-family: Impact, Charcoal, sans-serif;
+	font-size: 20px;
+}
+
+#postHead {
+	padding-top:0px;
+	padding-bottom:0px;
+	max-height: 7vh;
+	font-weight: bold;
+	font-size: 5vh;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+#postBody {
+	font-size: 2vh;
+	text-align: center;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+	margin-bottom: 2vh;
+}
+
+
+div.stockmenu {
+    background-color: white;
+    overflow: auto;
+    white-space: nowrap;
+    margin-bottom: 2vh auto;
+}
+
+div.stockmenu div {
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    border: 2px solid black;
+    margin: 0px;
+    width: 13vh;
+    letter-spacing: 2px;
+    font-size: 15px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+div.stockmenu img {
+	height: 8px;
+	width: 8px;
+}
+
+.stockmenu div:nth-child(n) {
+	background: #d6cdcb;
+}
+
+.stockmenu div:nth-child(2n) {
+	background: white;
+}
+
+
+
+
