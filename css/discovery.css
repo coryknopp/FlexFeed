@@ -32,6 +32,14 @@ h5 {
     flex-basis: 30%;
 }
 
+#top {
+	background: #85adad; 
+	margin: 0;
+	text-align: center;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	margin-bottom: 0px;
+}
 .cell_blue {
     background-color: rgba(83, 168, 212, .5);
 }
