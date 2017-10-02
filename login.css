@@ -1,0 +1,65 @@
+html {
+  display:inline-block;
+}
+
+#sm {
+  height: 20vh;
+  align-items: center;
+  margin-left: 450px;
+  text-align: center;
+  align-self: center;
+}
+
+#top {
+  background: #85adad; 
+  margin: 0;
+  text-align: center;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 0px;
+}
+
+.jumbotron h1 {
+  letter-spacing: 2px;
+  font-size: 10vh;
+}
+
+#user {
+  height: 100vh;
+  background: #c8cace;
+  margin-right: 10vh;
+}
+
+
+.navbar {
+  background-color: #76ccbf;
+  border: none;
+}
+
+.nav .navbar-nav a {
+  color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+  color: black;
+  background-color: #59a398;
+}
+
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+
+.navbar-inverse .navbar-brand:hover {
+  color: black;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+  color: black;
+  background-color: transparent;
+}
+
+
