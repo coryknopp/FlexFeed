@@ -2,6 +2,10 @@ body {
     background-color: #E6ECF0;
 }
 
+h1 {
+ letter-spacing: normal;   
+}
+
 .grid {
     display: flex;
     flex-wrap: wrap;
