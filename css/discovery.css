@@ -7,6 +7,10 @@ h1 {
     margin-top: 10px;
 }
 
+header .title {
+    letter-spacing: normal;
+}
+
 h5 {
     margin-bottom: 50px;
 }
