@@ -17,7 +17,6 @@ row {
 	font-size: 2vh;
     background-color: gray;
     box-shadow: 0 2px 1px -1px gray;
-
 }
 
 .remove-left-padding {
@@ -42,33 +41,44 @@ row {
 }
 
 .group  {
-    margin-top: 2%;
+    margin-top: 5%;
     padding: .25% .25% .25% .25%;
     height: 200px;
 }
 
-.post {
-    padding: .25% .25% .25% .25%;  
+.post-column {
+    padding: .25% .25% .25% .25%; 
 }
 
 #first {
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
-.post-body, .group-body {
-    padding: .5% .5% .5% .5%;
+.post, .group-body {
+    padding: .25% .5% .25% .5%;
     background-color: #FFFFFF;
-    margin-bottom: 1%;
+    margin-bottom: .5%;
 }
 
 .group-body {
     height: 100%;
 }
 
-.twitter-tweet {
-    width: 100%;
+.instagram {
+    background-color: #f9efd6;
+}
+
+.twitter {
+    background-color: rgba(80, 180, 242, .5);
+    margin-left: 15%;
+    margin-right: 15%;
+
+}
+
+.twitter-frame {
+    padding-top: 1px;
 }
 
 .dummy {
-    margin-top: 2%;
+    margin-top: 5%;
 }
