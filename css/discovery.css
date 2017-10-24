@@ -2,17 +2,25 @@ body {
     background-color: #E6ECF0;
 }
 
-h1 {
-    color: black;
-    margin-top: 10px;
-}
-
-header .title {
-    letter-spacing: normal;
-}
-
 h5 {
     margin-bottom: 50px;
+}
+
+h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.main-title {
+    font-size: 24px;
+    line-height: 2;
+    letter-spacing: .1vh;
+    text-align: center;
+}
+
+.title {
+    border-bottom: none;
 }
 
 .grid {
@@ -33,7 +41,7 @@ h5 {
     margin-right: 5px;
     margin-bottom: 10px;
     
-    flex-basis: 30%;
+    flex-basis: 18%;
 }
 
 .cell_blue {
@@ -78,12 +86,14 @@ h5 {
 
 .cell_title {
     margin: 0;
-    position: absolute;
+    position: relative;
     top: 20%;              
     left: 50%;
     transform: translate(-50%, -50%); 
-    font-size: 2em;
+    font-size: 1.5em;
     display: block;
+    text-align: center;
+
 }
 
 .cell_title:hover {
@@ -98,6 +108,7 @@ h5 {
     transform: translate(-50%, -50%); 
     font-size: 1.4em;
     display: block;
+    text-align: center;
 }
 
 .cell_footer {
