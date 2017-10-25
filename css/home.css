@@ -41,7 +41,7 @@ row {
 }
 
 .group  {
-    margin-top: 0;
+    margin-top: 10%;
     padding: .25% .25% .25% .25%;
     height: 200px;
 }
@@ -51,7 +51,7 @@ row {
 }
 
 #first {
-    margin-top: 1%;
+    margin-top: 10%;
 }
 
 .post, .group-body {
@@ -91,7 +91,8 @@ row {
 }
 
 .stockmenu {
-    margin-top: 55px;
+    padding-top: 54px;
+    position: fixed;
 }
 
 div.stockmenu {
@@ -99,6 +100,7 @@ div.stockmenu {
     overflow: auto;
     white-space: nowrap;
     margin-bottom: 2vh auto;
+    z-index: 1;
 }
 
 div.stockmenu div {
