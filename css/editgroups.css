@@ -1,8 +1,8 @@
 
 #search  {
     position: fixed;
-    top: 30%;
-    left: 45%;
+    top: 25%;
+    left: 39.5%;
     transform: translate(-50%, -50%);
     size: 40;
     height: 40px;
@@ -10,12 +10,17 @@
     width:400px;
 }
 
+h2 {
+    margin-left: 310px;
+    margin-top: 50px;
+}
 
 .addGroup  {
     position: fixed;
     top: 65%;
-    left: 47%;
+    left: 45%;
     transform: translate(-50%, -50%);
+    width: 550px;
 }
 
 #groupName{
@@ -23,11 +28,14 @@
     height: 40px;
     border-radius: 10px;
     width:400px;
+    display: inline-block;
 }
 
 button{
     border-radius: 5px;
     background-color:#85adad;
+    display: inline-block;
+    margin-left: 10px;
 }
 
 #members{
@@ -35,7 +43,7 @@ button{
     position: fixed;
     overflow:scroll;
 /*    white-space: nowrap;*/
-    top: 35%;
+    top: 30%;
     left: 20%;
     width: 810px;
     height: 200px;
@@ -89,10 +97,10 @@ button{
     position: fixed;
     overflow:scroll;
     white-space: nowrap;
-    top: 70%;
-    left: 23%;
+    top: 65%;
+    left: 20%;
     right: 20%;
-    width: 750px;
+    width: 810px;
     height: 160px;
 }
 

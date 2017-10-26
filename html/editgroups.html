@@ -15,10 +15,6 @@
 </head>
     
 <body style="background: #e0ebeb">
-    <div id="top">
-        <h1> <img src="../Icons/leftflex.png" style="width:10vh; height:10vh;"> FLEXFEED<img src="../Icons/rightflex.png" style="width:10vh; height: 10vh"></h1>
-    </div>
-
 
     <nav class="navbar navbar-inverse" id="navbar">
         <div class="container-fluid">
@@ -35,35 +31,11 @@
             <li><a href="login.html">Log Out</a></li>
             </ul>
     </div>
-</nav>
-
-<div class="stockmenu">
-  <div>Apple<br> 154.12 <img src="../Icons/red.png"></div>
-  <div>Tesla<br> 341.10 <img src="../Icons/green.png"></div>
-  <div>Microsoft<br> 74.49 <img src="../Icons/green.png"></div>
-  <div>Mcdonalds<br> 156.68 <img src="../Icons/red.png"></div>
-  <div>BestBuy<br> 59.96 <img src="../Icons/red.png"></div>
-  <div>Nike<br> 51.58 <img src="../Icons/red.png"></div>
-  <div>Chipotle<br> 307.83 <img src="../Icons/green.png"></div>
-  <div>Netflix<br> 181.35 <img src="../Icons/red.png"></div>
-  <div>HP<br> 19.96 <img src="../Icons/green.png"></div>
-  <div>Adidas<br> 191.40 <img src="../Icons/red.png"></div>
-  <div>Target<br> 59.01 <img src="../Icons/red.png"></div>
-  <div>Walmart<br> 78.14 <img src="../Icons/green.png"></div>
-  <div>Yelp<br> 43.30 <img src="../Icons/red.png"></div>
-  <div>Facebook<br> 170.00 <img src="../Icons/green.png"></div>
-  <div>Twitter<br> 16.87 <img src="../Icons/red.png"></div>
-  <div>Google<br> 973.72 <img src="../Icons/green.png"></div>
-  <div>Kohls<br> 45.65 <img src="../Icons/red.png"></div>
-  <div>UnderArmour<br> 16.48 <img src="../Icons/red.png"></div>
-  <div>NewBalance<br> 24.50 <img src="../Icons/green.png"></div>
-</div>
-
+</nav>  
     
+    <h2>Edit Groups</h2>
     
-    <h2>Edit Groups!</h2>
-    
-    <input id="search" autocomplete="on" size='40' placeholder="Search for Person or Group" style="margin-top: 3vh;">
+    <input id="search" autocomplete="on" type="text" class="form-control" name="searchpersongroup" placeholder="Search for Person or Group" required autofocus="" />
     <div id = "members" style="margin-top: 1vh;">
         <ul>
             <li class="member"><h6 class="X">X</h6><h5>David Barrington</h5>  <img src="../Individuals/dBarrington.jpg"></li>
@@ -81,7 +53,7 @@
         </ul>
     </div>
     <div class="addGroup">
-        <input id = "groupName" placeholder="Enter Group Name">
+        <input id="groupName" type="text" class="form-control" name="searchgroup" placeholder="Enter Group Name"/>
         <button type="button">Add Group</button>
     </div>
     <div class= "People"></div>
