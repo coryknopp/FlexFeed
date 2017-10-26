@@ -13,8 +13,8 @@ row {
 #navbar {
     border-radius: 0;
     border: 1px solid gray;
-  margin: 0px auto;
-  font-size: 2vh;
+    margin: 0px auto;
+    font-size: 2vh;
     background-color: gray;
     box-shadow: 0 2px 1px -1px gray;
 }
@@ -34,10 +34,23 @@ row {
     transform: translate(-50%, 0);
 }
 
+.navbar-inverse .navbar-nav>li>a {
+    color: #cccccc;
+}
+
 .navbar-brand {
     position: relative;
     margin-left: auto;
     margin-right: auto;
+}
+
+.navbar-inverse .navbar-brand {
+    font-size: xx-large;
+    color: #cccccc;
+}
+
+.navbar-inverse .navbar-nav>.active>a {
+    background-color: #595959;
 }
 
 .group  {
@@ -93,6 +106,7 @@ row {
 .stockmenu {
     padding-top: 54px;
     position: fixed;
+    width: 1280px;
 }
 
 div.stockmenu {
