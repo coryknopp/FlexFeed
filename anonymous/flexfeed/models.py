@@ -5,17 +5,22 @@ class Post(models.Model):
     """
     Model representing a book genre (e.g. Science Fiction, Non Fiction).
     """
-    site = models.CharField(max_length=50, help_text="The social media site this post was made on.")
-    text = models.CharField(max_length=500, help_text="The text in the social media post.")
-    #pic = models.ImageField(upload_to="../pics/post_pics", help_text="The picture in the social media post.")
-    picture = models.URLField(max_length=20000)
+    description = models.CharField(max_length=100, help_text="Enter a post description")
+    link = models.URLField(max_length=20000, default='')
+    site_Choices = (
+        ('IG', 'Instagram'),
+        ('TWT', 'Twitter'),
+        ('FB', 'Facebook'),
+    )
+
+    site = models.CharField(max_length=3, choices=site_Choices, blank=True, default='FB', help_text='Choose the site this post is on')
 
 
     def __str__(self):
         """
         String for representing the Model object (in Admin site etc.)
         """
-        return self.text
+        return self.description
 
 
 class Stock(models.Model):
