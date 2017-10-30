@@ -1,15 +1,17 @@
 <html>
     
     <head>
-        
+        {% block title %}<title>Groups</title>{% endblock %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/home.css" type="text/css">
-        <link rel="stylesheet" href="../css/groups.css" type="text/css">
+        
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/groups.css' %}" type="text/css">
  
     </head>
     <body style="background: #e0ebeb">
         
-        <nav class="navbar navbar-inverse" id="navbar">
+         <nav class="navbar navbar-inverse" id="navbar">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">FlexFeed</a>
@@ -31,11 +33,19 @@
             <h5>These are the groups you will see on your feed. Browse, edit, or remove them from this window.</h5>
         </header>
         
+        {% block groups_grid %}
         <div class="col-sm-6 col-sm-offset-3">
             <div class='grid'>
+                {% for group in all_groups %}
                 <div class='cell'>
-                    <div class='content'>
-                        Technology
+                    <div class='name'>
+                        {{ group.name }}
+                    </div>
+                    <div class='subscribers'>
+                        Subscribers<br>{{ group.subscribers }}
+                    </div>
+                    <div class='views'>
+                        Views<br>{{ group.views }}
                     </div>
                     <div class='content_footer_left'>
                         <a href='editgroups.html'>Edit</a>
@@ -44,28 +54,7 @@
                         <a href='#'>Remove</a>
                     </div>
                 </div>
-                <div class='cell'>
-                    <div class='content'>
-                        Agriculture
-                    </div>
-                    <div class='content_footer_left'>
-                        <a href='editgroups.html'>Edit</a>
-                    </div>
-                    <div class='content_footer_right'>
-                        <a href='#'>Remove</a>
-                    </div>
-                </div>
-                <div class='cell'>
-                    <div class='content'>
-                        Automotive
-                    </div>
-                    <div class='content_footer_left'>
-                        <a href='editgroups.html'>Edit</a>
-                    </div>
-                    <div class='content_footer_right'>
-                        <a href='#'>Remove</a>
-                    </div>
-                </div>
+                {% endfor %}
                 <div class='cell'>
 
                     <a href='editgroups.html'>
@@ -74,5 +63,6 @@
                 </div>
             </div>
         </div>
+        {% endblock %}
     </body>
 </html>
