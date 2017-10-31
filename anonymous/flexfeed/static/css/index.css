@@ -62,7 +62,7 @@ row {
 }
 
 .post-column {
-    padding: .25% .25% .25% .25%; 
+    padding: .25% .25% .25% .25%;
 }
 
 #first {
@@ -109,7 +109,7 @@ row {
 }
 
 .stockmenu {
-    padding-top: 54px;
+    padding-bottom: 0px;
     position: fixed;
     padding-bottom: 0px;
 }

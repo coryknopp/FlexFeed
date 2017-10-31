@@ -1,119 +1,77 @@
-<!DOCTYPE html>
-<html lang='en'>
+{% extends "flexfeed_template.html" %}
+{% load static%}
 
-<head>
-   {% block title %}<title>Home</title>{% endblock %}
-    <title>FLEXFEED</title>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+{% block content %}
+  <div class="stockmenu">
+    {% for stock in all_Stocks %}
+      <div> {{ stock.company }} <br> {{ stock.value }}
+    {% if stock.trend %} <img src="{% static 'Icons/green.png' %}"></div>
+    {% else %} <img src="{% static 'Icons/red.png' %}"></div>
+    {% endif %}
+    {% endfor %}
+  </div>
 
+  <row>
+      <!-- {% block userDropdown %} THIS IS NOT NEEDED -->
+      <div class='col-md-3 group'>
+        <div class='group-body'>
+          <h3>{{all_Users.0}}</h3>
+          <p><strong> Current Group: </strong> {{all_Groups.0}} </p>
+          <div class="container">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                Groups
+              <span class="caret"></span>
+              </button>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+              <ul class="dropdown-menu">
+                {% for group in all_Groups %}
+                <li><a href="#">{{group.name}}</a></li>
+                {% endfor %}
+              </ul>
 
-</head>
-
-<body>
-
-{% block navBar %}
-<nav class='navbar navbar-inverse navbar-fixed-top' id='navbar' style="margin: 0">
-    <div class='container-fluid remove-left-padding'>
-        <ul class='nav navbar-nav'>
-            <li class='active'><a href='#'>Home</a></li>
-            <li><a href='discovery.html'>Discover</a></li>
-            <li><a href='groups.html'>Groups</a></li>
-            <li><a href='settings.html'>Settings</a></li>
-        </ul>
-        <div class='navbar-header'>
-            <a class='navbar-brand' href='#'>FlexFeed</a>
-        </div>
-        <ul class='nav navbar-nav navbar-right'>
-            <li><a href='login.html'>Log Out</a></li>
-        </ul>
-    </div>
-</nav>
-{% endblock %}
-
-{% block stockMenu %}
-<div class="stockmenu">
-  {% for stock in all_Stocks %}
-  <div> {{ stock.company }} <br> {{ stock.value }} 
-  {% if stock.trend %} <img src="{% static 'Icons/green.png' %}"></div>
-  {% else %} <img src="{% static 'Icons/red.png' %}"></div>
-  {% endif %}
-  {% endfor %}
-</div>
-{% endblock %}
-
-
-<row>
-    {% block userDropdown %}
-    <div class='col-md-3 group'>
-      <div class='group-body'>
-        <h3>{{all_Users.0}}</h3>
-        <p><strong> Current Group: </strong> {{all_Groups.0}} </p>
-        <div class="container">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-              Groups
-            <span class="caret"></span>
-            </button>
-                
-            <ul class="dropdown-menu">
-              {% for group in all_Groups %}
-              <li><a href="#">{{group.name}}</a></li>
-              {% endfor %}
-            </ul>
-                
-            </div>
-        </div>
-      </div>
-    </div>
-    {% endblock %}
-
-
-    {% block socialFeed %}
-    <div class='col-md-6 post-column' id = "first">
-
-      {% for post in IG_Posts %}
-      <div class='post instagram'>            
-        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-          <div style="padding:8px;"> 
-            <p> 
-              <a href={{post.link}} style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank"></a>
-            </p> 
+              </div>
           </div>
-        </blockquote>
-        <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
-      </div>
-      {% endfor %}
-
-      {% for post in TWT_Posts %}
-      <div class='post twitter'>
-        <div class='twitter-frame'>
-          <blockquote class="twitter-tweet" data-lang="en" align="center">   
-            <a href={{post.link}}></a>
-          </blockquote>
         </div>
       </div>
-      <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      {% endfor %}
+      <!-- {% endblock %} THIS IS NOT NEEDED-->
 
-      
-      {% for post in FB_Posts %}
-      <div class='post facebook' style="text-align: center; width: 100%;">
-        <iframe src={{post.link}} width="618" height="664" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="false"></iframe>
+
+      <!-- {% block socialFeed %} THIS IS NOT NEEDED-->
+      <div class='col-md-6 post-column' id = "first">
+
+        {% for post in IG_Posts %}
+        <div class='post instagram'>
+          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+            <div style="padding:8px;">
+              <p>
+                <a href={{post.link}} style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank"></a>
+              </p>
+            </div>
+          </blockquote>
+          <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
+        </div>
+        {% endfor %}
+
+        {% for post in TWT_Posts %}
+        <div class='post twitter'>
+          <div class='twitter-frame'>
+            <blockquote class="twitter-tweet" data-lang="en" align="center">
+              <a href={{post.link}}></a>
+            </blockquote>
+          </div>
+        </div>
+        <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        {% endfor %}
+
+
+        {% for post in FB_Posts %}
+        <div class='post facebook' style="text-align: center; width: 100%;">
+          <iframe src={{post.link}} width="618" height="664" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="false"></iframe>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
-    {% endblock %}
-    
-</row>
+      <!-- {% endblock %}  THIS IS NOT NEEDED-->
 
-  
-      
-</body>
-</html>
+  </row>
+{% endblock %}

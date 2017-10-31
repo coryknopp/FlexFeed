@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+   {% block title %}<title>Home</title>{% endblock %}
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link type="image" href="{% static 'Individuals/' %}">
+
+</head>
+
+<body>
+
+  <nav class='navbar navbar-inverse navbar-fixed-top' id='navbar' style="margin: 0">
+      <div class='container-fluid remove-left-padding'>
+          <ul class='nav navbar-nav'>
+              <li class='active'><a href='#'>Home</a></li>
+              <li><a href='discovery'>Discover</a></li>
+              <li><a href='groups'>Groups</a></li>
+              <li><a href='settings'>Settings</a></li>
+          </ul>
+          <div class='navbar-header'>
+              <a class='navbar-brand' href='#'>FlexFeed</a>
+          </div>
+          <ul class='nav navbar-nav navbar-right'>
+              <li><a href='login'>Log Out</a></li>
+          </ul>
+      </div>
+  </nav>
+
+  <div style="padding-top:55px">
+    {% block content %} <!-- Each of you will have your custom code in here -->{% endblock %}
+  </div>
+
+
+</body>
+</html>

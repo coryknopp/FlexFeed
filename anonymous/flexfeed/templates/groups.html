@@ -1,68 +1,44 @@
-<html>
-    
-    <head>
-        {% block title %}<title>Groups</title>{% endblock %}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'css/groups.css' %}" type="text/css">
- 
-    </head>
-    <body style="background: #e0ebeb">
-        
-         <nav class="navbar navbar-inverse" id="navbar">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">FlexFeed</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="discovery.html">Discover</a></li>
-                    <li class="active"><a href="#">Groups</a></li>
-                    <li><a href="settings.html">Settings</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login.html">Log Out</a></li>
-                </ul>
+{% extends "flexfeed_template.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+<header class="text-center">
+    <h1 class='title'>Manage Your Groups</h1>
+    <h5>These are the groups you will see on your feed. Browse, edit, or remove them from this window.</h5>
+</header>
+
+<!-- {% block groups_grid %} NOT NEEDED-->
+<div class="col-sm-6 col-sm-offset-3">
+    <div class='grid'>
+        {% for group in all_groups %}
+        <div class='cell'>
+            <div class='name'>
+                {{ group.name }}
             </div>
-        </nav>
-
-        <header class="text-center">
-            <h1 class='title'>Manage Your Groups</h1>
-            <h5>These are the groups you will see on your feed. Browse, edit, or remove them from this window.</h5>
-        </header>
-        
-        {% block groups_grid %}
-        <div class="col-sm-6 col-sm-offset-3">
-            <div class='grid'>
-                {% for group in all_groups %}
-                <div class='cell'>
-                    <div class='name'>
-                        {{ group.name }}
-                    </div>
-                    <div class='subscribers'>
-                        Subscribers<br>{{ group.subscribers }}
-                    </div>
-                    <div class='views'>
-                        Views<br>{{ group.views }}
-                    </div>
-                    <div class='content_footer_left'>
-                        <a href='editgroups.html'>Edit</a>
-                    </div>
-                    <div class='content_footer_right'>
-                        <a href='#'>Remove</a>
-                    </div>
-                </div>
-                {% endfor %}
-                <div class='cell'>
-
-                    <a href='editgroups.html'>
-                        <div class='new glyphicon glyphicon-plus'></div>
-                    </a>
-                </div>
+            <div class='subscribers'>
+                Subscribers<br>{{ group.subscribers }}
+            </div>
+            <div class='views'>
+                Views<br>{{ group.views }}
+            </div>
+            <div class='content_footer_left'>
+                <a href='editgroups.html'>Edit</a>
+            </div>
+            <div class='content_footer_right'>
+                <a href='#'>Remove</a>
             </div>
         </div>
-        {% endblock %}
-    </body>
-</html>
+        {% endfor %}
+        <div class='cell'>
+
+            <a href='edit'>
+                <div class='new glyphicon glyphicon-plus'></div>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- {% endblock %} NOT NEEDED-->
+{% endblock %}

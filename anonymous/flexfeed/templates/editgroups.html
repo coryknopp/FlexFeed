@@ -1,55 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>FLEXFEED</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "flexfeed_template.html" %}
+{% load static%}
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% block content %}
 
-  <link rel="stylesheet" type="text/css" href="../css/editgroups.css">
-  <link rel="stylesheet" type="text/css" href="../css/home.css">
-
-</head>
-    
-<body style="background: #e0ebeb">
-
-    <nav class="navbar navbar-inverse" id="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">FlexFeed</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="discovery.html">Discover</a></li>
-                <li><a href="groups.html">Groups</a></li>
-                <li><a href="settings.html">Settings</a></li>
-            </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html">Log Out</a></li>
-            </ul>
-    </div>
-</nav>  
-    
     <h2>Edit Groups</h2>
-    
+
     <input id="search" autocomplete="on" type="text" class="form-control" name="searchpersongroup" placeholder="Search for Person or Group" required autofocus="" />
     <div id = "members" style="margin-top: 1vh;">
         <ul>
-            <li class="member"><h6 class="X">X</h6><h5>David Barrington</h5>  <img src="../Individuals/dBarrington.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Tim Richards</h5> <img src="../Individuals/tRichards.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Arjun Guha</h5>  <img src="../Individuals/arjun-guha.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Kumble Subbaswamy</h5> <img src="../Individuals/chancellor.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Neil Immerman</h5>  <img src="../Individuals/Neil%20Immerman.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Ramesh Sitaraman</h5> <img src="../Individuals/Ramesh.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>David Barrington</h5>  <img src="../Individuals/dBarrington.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Tim Richards</h5> <img src="../Individuals/tRichards.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Arjun Guha</h5>  <img src="../Individuals/arjun-guha.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Kumble Subbaswamy</h5> <img src="../Individuals/chancellor.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Neil Immerman</h5>  <img src="../Individuals/Neil%20Immerman.jpg"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Ramesh Sitaraman</h5> <img src="../Individuals/Ramesh.jpg"></li>
+            <li class="member"><h6 class="X">X</h6><h5>David Barrington</h5>  <im src="{% 'Individuals/dBarrington.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>Tim Richards</h5> <im src="{% 'Individuals/tRichards.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>Arjun Guha</h5>  <im src="{% 'Individuals/arjun-guha.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>Kumble Subbaswamy</h5> <im src="{% 'Individuals/chancellor.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>Neil Immerman</h5>  <im src="{% 'Individuals/Neil%20Immerman.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>Ramesh Sitaraman</h5> <im src="{% 'Individuals/Ramesh.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>David Barrington</h5>  <im src="{% 'Individuals/dBarrington.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>Tim Richards</h5> <im src="{% 'Individuals/tRichards.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>Arjun Guha</h5>  <im src="{% 'Individuals/arjun-guha.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>Kumble Subbaswamy</h5> <im src="{% 'Individuals/chancellor.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>Neil Immerman</h5>  <im src="{% 'Individuals/Neil%20Immerman.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>Ramesh Sitaraman</h5> <im src="{% 'Individuals/Ramesh.jpg' %}"></li>
         </ul>
     </div>
     <div class="addGroup">
@@ -57,17 +27,16 @@
         <button type="button">Add Group</button>
     </div>
     <div class= "People"></div>
-    
+
     <div id = "groups">
         <ul>
-            <li class="group"><h4>Teachers</h4><img src="../Individuals/UMass.jpg"></li>
-            <li class="group"><h4>Athletics</h4><img src="../Individuals/Athletics.jpg"></li>
-            <li class="group"><h4>Automobiles</h4><img src="../Individuals/Automobiles.jpg"></li>
-            <li class="group"><h4>Technology</h4><img src="../Individuals/Tech.jpg"></li>
-            <li class="group"><h4>Artists</h4><img src="../Individuals/Artists.jpg"></li>
-            <li class="group"><h4>The Homies</h4><img src="../Individuals/Friends.jpg"></li>
-            <li class="group"><h4>Add New Groups</h4><img src="../Individuals/plus.jpg"></li>
+            <li class="group"><h4>Teachers</h4><im src="{% 'Individuals/UMass.jpg' %}"></li>
+            <li class="group"><h4>Athletics</h4><im src="{% 'Individuals/Athletics.jpg' %}"></li>
+            <li class="group"><h4>Automobiles</h4><im src="{% 'Individuals/Automobiles.jpg' %}"></li>
+            <li class="group"><h4>Technology</h4><im src="{% 'Individuals/Tech.jpg' %}"></li>
+            <li class="group"><h4>Artists</h4><im src="{% 'Individuals/Artists.jpg' %}"></li>
+            <li class="group"><h4>The Homies</h4><im src="{% 'Individuals/Friends.jpg' %}"></li>
+            <li class="group"><h4>Add New Groups</h4><im src="{% 'Individuals/plus.jpg' %}' %}"></li>
         </ul>
     </div>
-    
-</body>
+{% endblock %}
