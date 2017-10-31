@@ -1,10 +1,11 @@
 {% extends "flexfeed_template.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/groups.css' %}">
+{% endblock %}
+
 {% block content %}
-
-
-
 <header class="text-center">
     <h1 class='title'>Manage Your Groups</h1>
     <h5>These are the groups you will see on your feed. Browse, edit, or remove them from this window.</h5>

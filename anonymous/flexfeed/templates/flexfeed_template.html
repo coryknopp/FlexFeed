@@ -12,7 +12,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="{% static 'css/groups.css' %}">
+=======
+    {% block extra_css %}{% endblock %}
+>>>>>>> b09b1cbf9296bd30074a3fb1e09b5b6491c415cb
     <link type="image" href="{% static 'Individuals/' %}">
 
 
@@ -23,16 +27,16 @@
   <nav class='navbar navbar-inverse navbar-fixed-top' id='navbar' style="margin: 0">
       <div class='container-fluid remove-left-padding'>
           <ul class='nav navbar-nav'>
-              <li class='active'><a href='#'>Home</a></li>
-              <li><a href='discovery'>Discover</a></li>
-              <li><a href='groups'>Groups</a></li>
-              <li><a href='settings'>Settings</a></li>
+              <li class='active'><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'discover' %}">Discover</a></li>
+              <li><a href="{% url 'groups' %}">Groups</a></li>
+              <li><a href="">Settings</a></li>
           </ul>
           <div class='navbar-header'>
               <a class='navbar-brand' href='#'>FlexFeed</a>
           </div>
           <ul class='nav navbar-nav navbar-right'>
-              <li><a href='login'>Log Out</a></li>
+              <li><a href="{% url 'login' %}">Log Out</a></li>
           </ul>
       </div>
   </nav>

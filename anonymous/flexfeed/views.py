@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Stock, User, Group, Post
+from .models import Stock, User, Group, Post, Member
 
 
 def index(request):
@@ -34,11 +34,12 @@ def groups(request):
 def editgroups(request):
 
     all_groups = Group.objects.all()
+    all_members = Member.objects.all()
 
     return render(
         request,
         'editgroups.html',
-        context={'all_groups': all_groups}
+        context={'all_groups': all_groups, 'all_members': all_members}
     )
 
 def discover(request):
