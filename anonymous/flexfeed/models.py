@@ -55,6 +55,7 @@ class Member(models.Model):
     Model representing a member.
     """
     name = models.CharField(max_length=100)
+    # profile_picture = models.URLField()
     sm_links = models.URLField()
     stock = models.ForeignKey(Stock, help_text="Select a stock for this member")
     post = models.ManyToManyField(Post, help_text="Select a post for this member")
