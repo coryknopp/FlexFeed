@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>FLEXFEED</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="home.css">
+
+</head>
+<body style="background: #e0ebeb">
+
+<div id="top">
+  <h1> <img src="leftflex.png" style="width:10vh; height:10vh;"> FLEXFEED<img src="rightflex.png" style="width:10vh; height: 10vh"></h1>
+</div>
+
+
+<nav class="navbar navbar-inverse" id="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FlexFeed</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Discover</a></li>
+      <li><a href="#">Groups</a></li>
+      <li class="active"><a href="#">Settings</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  
+        <div class="row">
+
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked admin-menu" style="margin: 1em;">
+                    <li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
+                    <li><a href="" data-target-id="change-password"><i class="glyphicon glyphicon-list-alt"></i> Feed </a></li>
+                    <li><a href="" data-target-id="settings"><i class="glyphicon glyphicon-cog"></i> General </a></li>
+                    <li><a href="" data-target-id="logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-9  admin-content" id="profile">
+                <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Group Name</h3>
+                    </div>
+                    <div class="panel-body">
+                        Tim Richards Inc.
+                    <div
+                    span style="float:right;"><a href='#'><span class='glyphicon glyphicon-pencil'></span> Edit </a>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Email</h3>
+                    </div>
+                    <div class="panel-body">
+                        trichards@umass.edu
+                    <div
+                    span style="float:right;"><a href='#'><span class='glyphicon glyphicon-pencil'></span> Edit </a>
+                    </div>
+                  </div>
+                </div>
+                 <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Description</h3>
+                    </div>
+                    <div class="panel-body">
+                        CS 326
+                    <!-- </div> -->
+                    <div
+                    span style="float:right;"><a href='#'><span class='glyphicon glyphicon-pencil'></span> Edit </a>
+                    </div>
+                  </div>
+                </div>
+              <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Tags</h3>
+                    </div>
+
+                    <div class="panel-body">
+
+                      <!-- <div class="col-md-6 text-right">$42</div> -->
+                    <!-- <div class="text-right">glyphicon glyphicon-edit Edit</div> -->
+                      <!-- <div class="row"> -->
+                        <!-- <div class="col-md-6 text-right">$42</div> -->
+
+                      <div class="badge">CompSci</div>
+                      <div class="badge">WebDesign</div>
+                      <div class="badge">HTML</div>
+                      <!-- <ul class="list-inline"> -->
+                      <div class="badge">CSS</div>
+                    <div
+                    span style="float:right;"><a href='#'><span class='glyphicon glyphicon-pencil'></span> Edit </a>
+                    </div>
+                  </div>
+                </div>
+                    <!-- </ul> -->
+    <!-- <div class="col-md-6">Total cost</div> -->
+                  
+
+
+
+<!-- <div class="container-fluid"> -->
+  <!-- <div class="row" >
+<!--     <div class="col-sm-3" id="user">
+      <h3> Tim Richards </h3>
+      <p>Current Group: <strong> Auto </strong></p>
+      <div class="container">                                          
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Groups
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Social</a></li>
+            <li><a href="#">Auto</a></li>
+            <li><a href="#">Tech</a></li>
+            <li><a href="#">Clothing</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+    <!-- <div class="col-sm-6" id="sm"> -->
+      <!-- <div class="panel panel-default" style="background: #e0ebeb;"> -->
+        
+        <!-- <div class="panel-heading" id="postHead" style="background: #7ba8c6">  -->
+          <!-- <p> <img src='fb.png' style="height: 7vh; width:7vh"> Tesla </p> -->
+        <!-- </div> -->
+<!--         <div class="panel-body text-center" id="postBody" style="background: #cce7f9">
+          <p> Solar + Storage now powering a sustainable school in Queensland, Australia </p>
+          <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ftesla%2Fvideos%2F10155617187772801%2F&show_text=1&width=560" width="560" height="568" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+        </div> -->
+
+        <!-- <div class="panel-heading" id="postHead" style="background: #bbd9ed"> -->
+          <!-- <p><img src='twt.png' style="height: 7vh; width:7vh"> Tesla </p> -->
+        <!-- </div> -->
+<!--         <div class="panel-body text-center" id="postBody" style="background: #e5f3fc">
+          <p id="socialBody"></p>
+          <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We poured our heart into the car. Hope you love it. <a href="https://t.co/DZOgQUfENo">https://t.co/DZOgQUfENo</a></p>&mdash; Elon Musk (@elonmusk) <a href="http://twitter.com/elonmusk/status/892545286748258305?ref_src=twsrc%5Etfw">August 2, 2017</a></blockquote> -->
+          <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+
+
+<!-- 
+        <div class="panel-heading" id="postHead" style="background: #ded1c1">
+          <p><img src='ig.png' style="height: 7vh; width:7vh"> Tesla </p>
+        </div> -->
+<!--         <div class="panel-body text-center" id="postBody" style="background: #f9efd6">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BYBj-1fhch_/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">One wheel to rule them all</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by Tesla (@teslamotors) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-08-20T17:43:22+00:00">Aug 20, 2017 at 10:43am PDT</time></p></div></blockquote>
+           <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
+        </div> -->
+
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
