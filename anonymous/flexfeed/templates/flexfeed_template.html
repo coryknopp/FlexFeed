@@ -12,7 +12,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/groups.css' %}">
+
+
+    {% block extra_css %}{% endblock %}
 
     <link type="image" href="{% static 'Individuals/' %}">
 
@@ -27,7 +29,7 @@
               <li class='active'><a href="{% url 'index' %}">Home</a></li>
               <li><a href="{% url 'discover' %}">Discover</a></li>
               <li><a href="{% url 'groups' %}">Groups</a></li>
-              <li><a href="">Settings</a></li>
+              <li><a href="{% url 'settings' %}">Settings</a></li>
           </ul>
           <div class='navbar-header'>
               <a class='navbar-brand' href='#'>FlexFeed</a>

@@ -52,6 +52,14 @@ def discover(request):
         context={'all_groups': all_groups}
     )
 
+def settings(request):
+    return render(
+        request,
+        'settings.html',
+        context={}
+        )
+
+
 def login(request):
 
     all_groups = Group.objects.all()
