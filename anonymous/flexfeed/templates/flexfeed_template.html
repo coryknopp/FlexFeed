@@ -22,7 +22,7 @@
 </head>
 
 <body>
-
+  {%block nav_bar%}
   <nav class='navbar navbar-inverse navbar-fixed-top' id='navbar' style="margin: 0">
       <div class='container-fluid remove-left-padding'>
           <ul class='nav navbar-nav'>
@@ -39,6 +39,7 @@
           </ul>
       </div>
   </nav>
+  {%endblock%}
 
   <div style="padding-top:55px">
     {% block content %} <!-- Each of you will have your custom code in here -->{% endblock %}

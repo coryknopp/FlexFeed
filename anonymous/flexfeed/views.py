@@ -69,23 +69,3 @@ def login(request):
         'login.html',
         context={'all_groups': all_groups}
     )
-
-def temp(request):
-
-    all_Stocks=Stock.objects.all()
-
-    return render(
-        request,
-        'flexfeed_template.html',
-        context={'all_Stocks': all_Stocks},
-    )
-
-def p(request):
-
-    all_groups = Group.objects.all()
-
-    return render(
-        request,
-        'practice.html',
-        context={'all_groups': all_groups}
-    )
