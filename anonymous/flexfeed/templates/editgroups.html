@@ -13,18 +13,7 @@
     <div id = "members" style="margin-top: 1vh;">
         <ul>
           {% for member in all_members %}
-            <li class="member"><h6 class="X">X</h6><h5>David Barrington</h5>  <im src="{%static 'Individuals/dBarrington.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Tim Richards</h5> <im src="{% static 'Individuals/tRichards.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Arjun Guha</h5>  <im src="{% static 'Individuals/arjun-guha.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Kumble Subbaswamy</h5> <im src="{% static 'Individuals/chancellor.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Neil Immerman</h5>  <im src="{% static 'Individuals/Neil%20Immerman.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Ramesh Sitaraman</h5> <im src="{% static 'Individuals/Ramesh.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>David Barrington</h5>  <im src="{% static 'Individuals/dBarrington.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Tim Richards</h5> <im src="{% static 'Individuals/tRichards.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Arjun Guha</h5>  <im src="{% static 'Individuals/arjun-guha.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Kumble Subbaswamy</h5> <im src="{% static 'Individuals/chancellor.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Neil Immerman</h5>  <im src="{% static 'Individuals/Neil%20Immerman.jpg' %}"></li>
-            <li class="member"><h6 class="X">X</h6><h5>Ramesh Sitaraman</h5> <im src="{% static 'Individuals/Ramesh.jpg' %}"></li>
+            <li class="member"><h6 class="X">X</h6><h5>{{member.name}}</h5>  <img src={{member.profile_picture}}></li>
           {% endfor %}
         </ul>
     </div>
