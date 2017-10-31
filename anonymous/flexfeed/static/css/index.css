@@ -62,11 +62,11 @@ row {
 }
 
 .post-column {
-    padding: .25% .25% .25% .25%;
+    padding: .25% .25% .25% .25%; 
 }
 
 #first {
-    margin-top: 14vh;
+    margin-top: 8vh;
 }
 
 .post, .group-body {
@@ -109,7 +109,6 @@ row {
 }
 
 .stockmenu {
-    padding-bottom: 0px;
     position: fixed;
     padding-bottom: 0px;
 }
