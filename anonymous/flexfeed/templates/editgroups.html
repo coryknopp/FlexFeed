@@ -17,21 +17,16 @@
           {% endfor %}
         </ul>
     </div>
-    <div class="addGroup">
+    <div class="addGroup" style="padding-bottom:60px;">
         <input id="groupName" type="text" class="form-control" name="searchgroup" placeholder="Enter Group Name"/>
         <button type="button">Add Group</button>
     </div>
-    <div class= "People"></div>
 
-    <div id = "groups">
+    <div id = "groups" style="padding:0px;">
         <ul>
-            <li class="group"><h4>Teachers</h4><im src="{% static 'Individuals/UMass.jpg' %}"></li>
-            <li class="group"><h4>Athletics</h4><im src="{% static 'Individuals/Athletics.jpg' %}"></li>
-            <li class="group"><h4>Automobiles</h4><im src="{% static 'Individuals/Automobiles.jpg' %}"></li>
-            <li class="group"><h4>Technology</h4><im src="{% static 'Individuals/Tech.jpg' %}"></li>
-            <li class="group"><h4>Artists</h4><im src="{% static 'Individuals/Artists.jpg' %}"></li>
-            <li class="group"><h4>The Homies</h4><im src="{% static 'Individuals/Friends.jpg' %}"></li>
-            <li class="group"><h4>Add New Groups</h4><im src="{% static 'Individuals/plus.jpg' %}' %}"></li>
+          {% for group in all_groups %}
+            <li class="group" style="padding:0px;"><h4>{{group.name}}</h4><img src={{group.picture}}></li>
+          {% endfor %}
         </ul>
     </div>
 {% endblock %}

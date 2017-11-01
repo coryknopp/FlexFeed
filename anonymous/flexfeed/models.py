@@ -77,6 +77,7 @@ class Group(models.Model):
     popularity = models.IntegerField()
     name = models.CharField(max_length=100)
     category = models.ManyToManyField(Category, help_text="Select a category")
+    picture = models.URLField(max_length=20000, default='')
 
     def __str__(self):
         """r
