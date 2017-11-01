@@ -55,10 +55,13 @@ def discover(request):
     )
 
 def settings(request):
+
+    all_Users=User.objects.all()
+
     return render(
         request,
         'settings.html',
-        context={}
+        context={'all_Users':all_Users}
         )
 
 

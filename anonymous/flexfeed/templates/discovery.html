@@ -31,7 +31,7 @@
     {% elif forloop.counter is 5 %}
     <div class='cell cell_green'>
 
-{% endif %}
+    {% endif %}
 
     <div class='cell_title' style="padding-bottom: 2vh; font-weight: bold">
         {{group.name}}
@@ -40,7 +40,7 @@
     <div class='subscribe glyphicon glyphicon-plus-sign'>
         <div style="font-size: 14px; text-align: center"> 
     
-            {% for member in all_members %}
+            {% for member in group.members.all %}
             {{member.name}}
             <br>
             {% endfor %}
@@ -83,8 +83,8 @@
 
     {% elif forloop.counter is 5 %}
     <div class='cell cell_green'>
-
-{% endif %}
+    
+    {% endif %}
 
     <div class='cell_title' style="padding-bottom: 2vh; font-weight: bold">
         {{group.name}}
@@ -93,7 +93,7 @@
     <div class='subscribe glyphicon glyphicon-plus-sign'>
         <div style="font-size: 14px; text-align: center"> 
     
-            {% for member in all_members %}
+            {% for member in group.members.all %}
             {{member.name}}
             <br>
             {% endfor %}
