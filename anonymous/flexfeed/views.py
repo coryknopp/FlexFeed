@@ -45,11 +45,13 @@ def editgroups(request):
 def discover(request):
 
     all_groups = Group.objects.all()
+    all_members = Member.objects.all()
+
 
     return render(
         request,
         'discovery.html',
-        context={'all_groups': all_groups}
+        context={'all_groups': all_groups, 'all_members': all_members}
     )
 
 def settings(request):

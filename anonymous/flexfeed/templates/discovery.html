@@ -1,9 +1,9 @@
 {% extends "flexfeed_template.html" %}
 {% load static %}
  
-     {% block extra_css %}
+{% block extra_css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/discovery.css' %}">
-  {% endblock %}
+{% endblock %}
 
 {% block content %}
 <div class="col-sm-10 col-sm-offset-1">
@@ -12,261 +12,103 @@
 
 <div class="col-sm-10 col-sm-offset-1">
     <div class='grid'>
-        <div class='cell cell_blue'>
-            <div class='cell_title'>
-                IT Memes
-            </div>
 
-            <div class='cell_subtitle'>
-                <a href='#'> @group_1 </a>
-            </div>
+        
+{% for group in all_groups %}
 
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
+    {% if forloop.counter is 1 %}
+    <div class='cell cell_blue'>
 
-            <div class='cell_footer'>
-                Subscribers: 200
-            </div>
-        </div>
+    {% elif forloop.counter is 2 %}
+    <div class='cell cell_red'>
 
-        <div class='cell cell_purple'>
-            <div class='cell_title'>
-                College
-            </div>
+    {% elif forloop.counter is 3 %}
+    <div class='cell cell_purple'>
+       
+    {% elif forloop.counter is 4 %}
+    <div class='cell cell_orange'>
 
-            <div class='cell_subtitle'>
-                <a href='#'> @group_2 </a>
-            </div>
+    {% elif forloop.counter is 5 %}
+    <div class='cell cell_green'>
 
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
+{% endif %}
 
-            <div class='cell_footer'>
-                Subscribers: 150
-            </div>
-        </div>
+    <div class='cell_title' style="padding-bottom: 2vh; font-weight: bold">
+        {{group.name}}
+    </div>
 
-        <div class='cell cell_red'>
-            <div class='cell_title'>
-                Kim Kardashian
-            </div>
+    <div class='subscribe glyphicon glyphicon-plus-sign'>
+        <div style="font-size: 14px; text-align: center"> 
+    
+            {% for member in all_members %}
+            {{member.name}}
+            <br>
+            {% endfor %}
 
-            <div class='cell_subtitle'>
-                <a href='#'> @group_3 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 125
-            </div>
-        </div>
-
-        <div class='cell cell_orange'>
-            <div class='cell_title'>
-                Tim Richards
-            </div>
-
-            <div class='cell_subtitle'>
-                <a href='#'> @group_4 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 125
-            </div>
-        </div>
-
-        <div class='cell cell_green'>
-            <div class='cell_title'>
-                cs326
-            </div>
-
-            <div class='cell_subtitle'>
-                <a href='#'> @group_5 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 125
-            </div>
         </div>
     </div>
+
+    <div class='cell_footer'>
+        Subscribers: {{group.subscribers}}
+    </div>
+
+</div>
+{% endfor %}
+</div>
 </div>
 
+
+
 <div class="col-sm-10 col-sm-offset-1">
-    <h1 class="main-title"> What your friends follow! </h1>
+    <h1 class="main-title"> Groups You Might Like </h1>
 </div>
 
 <div class="col-sm-10 col-sm-offset-1">
     <div class='grid'>
-        <div class='cell cell_blue'>
-            <div class='cell_title'>
-                Summer 2017
-            </div>
 
-            <div class='cell_subtitle'>
-                <a href='#'> @group_1 </a>
-            </div>
+        
+{% for group in all_groups %}
 
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
+    {% if forloop.counter is 1 %}
+    <div class='cell cell_blue'>
 
-            <div class='cell_footer'>
-                Subscribers: 200
-            </div>
-        </div>
+    {% elif forloop.counter is 2 %}
+    <div class='cell cell_red'>
 
-        <div class='cell cell_purple'>
-            <div class='cell_title'>
-                Exotic Cars
-            </div>
+    {% elif forloop.counter is 3 %}
+    <div class='cell cell_purple'>
+       
+    {% elif forloop.counter is 4 %}
+    <div class='cell cell_orange'>
 
-            <div class='cell_subtitle'>
-                <a href='#'> @group_2 </a>
-            </div>
+    {% elif forloop.counter is 5 %}
+    <div class='cell cell_green'>
 
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
+{% endif %}
 
-            <div class='cell_footer'>
-                Subscribers: 150
-            </div>
-        </div>
+    <div class='cell_title' style="padding-bottom: 2vh; font-weight: bold">
+        {{group.name}}
+    </div>
 
-        <div class='cell cell_red'>
-            <div class='cell_title'>
-                Vacation
-            </div>
+    <div class='subscribe glyphicon glyphicon-plus-sign'>
+        <div style="font-size: 14px; text-align: center"> 
+    
+            {% for member in all_members %}
+            {{member.name}}
+            <br>
+            {% endfor %}
 
-            <div class='cell_subtitle'>
-                <a href='#'> @group_3 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 125
-            </div>
-        </div>
-
-        <div class='cell cell_orange'>
-            <div class='cell_title'>
-                Title4
-            </div>
-
-            <div class='cell_subtitle'>
-                <a href='#'> @group_4 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 125
-            </div>
-        </div>
-
-        <div class='cell cell_green'>
-            <div class='cell_title'>
-                Title5
-            </div>
-
-            <div class='cell_subtitle'>
-                <a href='#'> @group_5 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 125
-            </div>
         </div>
     </div>
-</div>
 
-<div class="col-sm-10 col-sm-offset-1">
-    <h1 class="main-title"> Common Topics </h1>
-</div>
-
-<div class="col-sm-10 col-sm-offset-1">
-    <div class='grid'>
-        <div class='cell cell_blue'>
-            <div class='cell_title'>
-                Agriculture
-            </div>
-
-            <div class='cell_subtitle'>
-                <a href='#'> @group_1 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 200
-            </div>
-        </div>
-
-        <div class='cell cell_purple'>
-            <div class='cell_title'>
-                News Reports
-            </div>
-
-            <div class='cell_subtitle'>
-                <a href='#'> @group_2 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 150
-            </div>
-        </div>
-
-        <div class='cell cell_red'>
-            <div class='cell_title'>
-                CS
-            </div>
-
-            <div class='cell_subtitle'>
-                <a href='#'> @group_3 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 125
-            </div>
-        </div>
-
-        <div class='cell cell_orange'>
-            <div class='cell_title'>
-                New In Tech
-            </div>
-
-            <div class='cell_subtitle'>
-                <a href='#'> @group_4 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 125
-            </div>
-        </div>
-
-        <div class='cell cell_green'>
-            <div class='cell_title'>
-                Title5
-            </div>
-
-            <div class='cell_subtitle'>
-                <a href='#'> @group_5 </a>
-            </div>
-
-            <div class='subscribe glyphicon glyphicon-plus-sign'> </div>
-
-            <div class='cell_footer'>
-                Subscribers: 125
-            </div>
-        </div>
+    <div class='cell_footer'>
+        Subscribers: {{group.subscribers}}
     </div>
+
 </div>
+{% endfor %}
+</div>
+</div>
+
+
 {% endblock %}
