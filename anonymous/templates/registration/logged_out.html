@@ -1,0 +1,18 @@
+{% extends "logInOut_template.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="col-sm-4"> </div>
+  <div class="col-sm-4" style="text-align: center;"">
+  <h3 style="font-size: 5vh">Logged out!</h3>  
+</div>
+
+
+<div class="container-fluid">
+  <div class="col-sm-4"> </div>
+  <div class="col-sm-4" style="text-align: center;"">
+  <a style="font-size: 2vh" href="{% url 'login'%}">Click here to login again.</a>
+</div>
+
+{% endblock %}

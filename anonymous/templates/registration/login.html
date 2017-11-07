@@ -1,0 +1,48 @@
+{% extends "logInOut_template.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+<div class="container-fluid">
+  <div class="col-sm-4"> </div>
+  <div class="col-sm-4" style="text-align: center;"">
+  <div class="wrapper">
+    <form class="form-signin">       
+      <h2 class="form-signin-heading">Log in:</h2>
+
+      <div>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </div>
+
+      <div>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+      </div>  
+      
+      <button class="btn btn-lg btn-primary btn-block" type="submit" value="{{next}}"
+        style="margin-top: 1vh">
+        Login
+      </button>   
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}
