@@ -69,7 +69,7 @@ class Member(models.Model):
         return '%s' % self.name
 
 
-class Group(models.Model):
+class Media_Group(models.Model):
     """
     Model representing a group
     """
@@ -99,7 +99,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
     profile_picture = models.URLField()
-    groups = models.ManyToManyField(Group, help_text="Select a group")
+    media_group = models.ManyToManyField(Media_Group, help_text="Select a group")
 
     def __str__(self):
         return '%s %s' % (self.user.first_name, self.user.last_name)
