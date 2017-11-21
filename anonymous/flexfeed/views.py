@@ -25,7 +25,7 @@ def index(request):
 def groups(request):
     all_groups = None
     if request.user.is_authenticated():
-        all_groups = request.user.profile.media_group.__dict__
+        all_groups = request.user.profile.media_group.all()
     return render(
         request,
         'groups.html',
