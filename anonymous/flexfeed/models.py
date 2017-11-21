@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Post(models.Model):
     """
@@ -86,24 +86,17 @@ class Group(models.Model):
         return self.name
 
 
-class User(models.Model):
+class Profile(models.Model):
     """
-    A class which defines a User.
+    A class which defines a Profile.
     """
     import uuid  # Required for unique book instances
     from django import forms
 
     # fields
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular user")
-    first_name = models.CharField(max_length=20, help_text="Enter your first name")
-    last_name = models.CharField(max_length=20, help_text="Enter your last name")
-    username = models.CharField(max_length=25, help_text="Enter your username (max 15 characters): ")
-    email = models.EmailField()
-    password = models.CharField(max_length=30, help_text="Enter your password: ")
-    #profile_picture = models.ImageField(upload_to = '../pics/user_pics/', default = '../pics/user_pics/no-img.jpg',
-    #                          help_text="Your profile picture")
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.URLField()
     groups = models.ManyToManyField(Group, help_text="Select a group")
 
     def __str__(self):
-        return '%s %s' % (self.first_name, self.last_name)
+        return '%s %s' % (self.user.first_name, self.user.last_name)

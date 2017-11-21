@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Post, Stock, Category, Member, Group, User
+from .models import Post, Stock, Category, Member, Group, Profile
 
 
 @admin.register(Post)
@@ -24,6 +24,6 @@ class MemberAdmin(admin.ModelAdmin):
 class GroupAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
     pass
