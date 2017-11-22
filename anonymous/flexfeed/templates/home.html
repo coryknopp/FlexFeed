@@ -15,8 +15,8 @@
   <row>
       <div class='col-md-3 group'>
         <div class='group-body'>
-          <h3>{{user.get_full_name}}</h3>
-          <p><strong> Current Group: </strong> {{ user.profile }} </p>
+          <h3>{{user.first_name}}</h3>
+          <p><strong> Current Group: </strong> {{ groups }} </p>
           <div class="container">
             <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -25,7 +25,7 @@
               </button>
 
               <ul class="dropdown-menu">
-                {% for group in user.media_group.all %}
+                {% for group in all_Groups %}
                 <li><a href="#">{{group.name}}</a></li>
                 {% endfor %}
               </ul>
