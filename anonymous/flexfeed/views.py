@@ -19,6 +19,9 @@ def index(request):
     FB_Posts = Post.objects.filter(site__contains='FB')
     all_Posts=Post.objects.all()
 
+    print(user)
+    print(user.profile.profile_picture)
+
     return render(
         request,
         'home.html',

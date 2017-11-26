@@ -62,7 +62,7 @@ row {
 }
 
 .post-column {
-    padding: .25% .25% .25% .25%; 
+    padding: .25% .25% .25% .25%;
 }
 
 #first {
@@ -115,7 +115,6 @@ row {
 
 div.stockmenu {
     padding-bottom: 0px;
-    background-color: white;
     overflow: auto;
     white-space: nowrap;
     margin-bottom: 2vh auto;

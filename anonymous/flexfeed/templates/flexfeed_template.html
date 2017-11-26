@@ -28,9 +28,11 @@
               <li><a href="{% url 'settings' %}">Settings</a></li>
           </ul>
           <div class='navbar-header'>
-              <a class='navbar-brand' href='#'>FlexFeed</a>
+              <a class='navbar-brand' href="{% url 'index' %}">FlexFeed</a>
           </div>
           <ul class='nav navbar-nav navbar-right'>
+              <li style="padding-top:5px;"><img style="width:40px; height40px; border-radius: 50%;" src="{{user.profile.profile_picture}}"</li>
+              <li><a href="{% url 'settings' %}">{{user.get_full_name}}</a></li>
               <li><a href="{% url 'logout' %}">Log Out</a></li>
           </ul>
       </div>
