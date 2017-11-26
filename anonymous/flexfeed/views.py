@@ -97,7 +97,8 @@ from .forms import EditProfileForm
 
 def edit_Profile(request):
     user = request.user
-    form = EditProfileForm()
+    initial = {'elf_notes': 'This is default text.'}
+    form = EditProfileForm(initial=initial)
     if request.method == 'POST':
 
         # Create a form instance and populate it with data from the request (binding):
