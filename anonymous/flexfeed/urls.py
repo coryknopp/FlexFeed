@@ -8,9 +8,13 @@ urlpatterns = [
     url(r'^login/$', views.login, name='login'),
     url(r'^discovery/$', views.discover, name='discover'),
     url(r'^settings/$', views.settings, name='settings'),
-    url(r'^groups/edit/$', views.editgroups, name='edit')
+    url(r'^groups/edit/$', views.edit, name='edit')
 ]
 
 urlpatterns += [
     url(r'^editprofile/', views.edit_Profile, name='editprofile'),
 ]
+
+#urlpatterns += [
+#    url(r'^groups/(?P<pk>[-\w]+)/edit/$', views.edit_groups, name='edit_groups'),
+#]
