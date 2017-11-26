@@ -47,13 +47,12 @@ def edit(request):
         user = request.user
         all_user_groups = request.user.profile.media_group.all()
 
-    members = all_user_groups[0].members.all()
     all_members = Member.objects.all()
 
     return render(
         request,
         'edit.html',
-        context={'all_user_groups': all_user_groups, 'all_members': all_members, 'group_members':members,'user':user}
+        context={'all_user_groups': all_user_groups, 'all_members': all_members,'user':user}
     )
 
 

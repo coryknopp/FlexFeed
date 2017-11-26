@@ -41,39 +41,7 @@
   <div class="verticalLine">
 
   </div>
-  <div id="members">
-    <div class="edit_toolbar">
-      <input id="group_name" placeholder='{{all_user_groups.0}}'/>
-      <button type="button"><img src="{% static 'Icons/save.png'%}"</button>
-      <!-- <input id="group_name" type="text" class="form-control" name="searchgroup" placeholder="Enter Group Name"/> -->
-    </div>
-    <ul>
-      {% for member in group_members %}
-      <a>
-        <li class="member">
-          <div class="attribute_block">
-            <img class="attr_img" src={{member.profile_picture}}>
-            <div class="attr_name">
-              <h4>{{member.name}}</h4>
-              <img src="{% static 'Icons/delete.png' %}">
-            </div>
-          </div>
-        </li>
-      </a>
-      {% endfor %}
-      <a>
-        <li class="member">
-          <div class="attribute_block">
-            <img class="attr_img" src="{% static 'Icons/createNew.png' %}">
-            <div class="attr_name">
-              <h4>Click to add to Group</h4>
-              <img src="{% static 'Icons/delete.png' %}">
-            </div>
-          </div>
-        </li>
-      </a>
-    </ul>
-  </div>
+
 </div>
 <!-- <div class="addGroup" style="padding-bottom:60px;">
         <input id="groupName" type="text" class="form-control" name="searchgroup" placeholder="Enter Group Name"/>
