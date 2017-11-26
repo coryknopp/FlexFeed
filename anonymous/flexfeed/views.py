@@ -97,8 +97,7 @@ from .forms import EditProfileForm
 
 def edit_Profile(request):
     user = request.user
-    initial = {'elf_notes': 'This is default text.'}
-    form = EditProfileForm(initial=initial)
+    form = EditProfileForm()
     if request.method == 'POST':
 
         # Create a form instance and populate it with data from the request (binding):
@@ -118,7 +117,7 @@ def edit_Profile(request):
                 user.profile.bio = form.cleaned_data['new_Bio']
             if form.cleaned_data['new_ProfilePicture']:
                 user.profile.profile_picture = form.cleaned_data['new_ProfilePicture']
-            if form.cleaned_data['new_Password']:
+            if form.cleaned_data['new_Password'] and (form.cleaned_data['new_Password'] == form.cleaned_data['new_ConfirmPassword']):
                 user.set_password(form.cleaned_data['new_Password'])
             user.save()
             return render(request, 'settings.html', {'form': form, 'user': user})
