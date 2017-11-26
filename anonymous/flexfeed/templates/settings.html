@@ -14,55 +14,60 @@
 
 <div class="container">
 
-  <div class="row">
+<div class="row">
 
-    <div class="col-md-3">
-      <img style="margin-left:10px; width:200px; height200px; border-radius: 50%;" src="{{ user.profile.profile_picture }}">
-      <ul class="nav nav-pills nav-stacked admin-menu" style="margin: 1em;">
+ <div class="col-md-3">
+  <img style="margin-left:10px; width:200px; height200px; border-radius: 50%;" src="{{ user.profile.profile_picture }}">
+ 	<ul class="nav nav-pills nav-stacked admin-menu" style="margin: 1em;">
 
-        <li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
-        <li><a href="" data-target-id="change-password"><i class="glyphicon glyphicon-list-alt"></i> Feed </a></li>
-        <li><a href="" data-target-id="settings"><i class="glyphicon glyphicon-cog"></i> Groups </a></li>
-        <!-- 		<li><a href="" data-target-id="logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li> -->
-      </ul>
+ 		<li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
+
+	</ul>
+ </div>
+
+ <div class="col-md-9 admin-content" id="profile">
+ 	<div class="panel panel-info" style="margin: 1em;">
+ 		<div class="panel-heading">
+ 			<h3 class="panel-title">Name</h3>
+ 			</div>
+ 	<div class="panel-body">
+ 		{{ user.get_full_name }}
+ 	</div>
+ 	</div>
+
+	<div class="panel panel-info" style="margin: 1em;">
+
+		<div class="panel-heading">
+		 	<h3 class="panel-title">Email</h3>
+		</div>
+
+		 <div class="panel-body">
+      {{ user.email }}
+		 </div>
+	 </div>
+
+ 	<div class="panel panel-info" style="margin: 1em;">
+ 		<div class="panel-heading">
+ 			<h3 class="panel-title">Username</h3>
+ 		</div>
+	 	<div class="panel-body">
+	 		{{ user.username }}
+	 	</div>
+ 	</div>
+
+  <div class="panel panel-info" style="margin: 1em;">
+    <div class="panel-heading">
+      <h3 class="panel-title">Bio</h3>
     </div>
+  <div class="panel-body">
+    {{ user.profile.bio }}
+  </div>
+  </div>
+</div>
 
-    <div class="col-md-9 admin-content" id="profile">
-      <div class="panel panel-info" style="margin: 1em;">
-        <div class="panel-heading">
-          <h3 class="panel-title">Name</h3>
-        </div>
-        <div class="panel-body">
-          {{ user.get_full_name }}
-          <div span style="float:right;"><a href='#'><span class='glyphicon glyphicon-pencil'></span> Edit </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel panel-info" style="margin: 1em;">
-
-        <div class="panel-heading">
-          <h3 class="panel-title">Email</h3>
-        </div>
-
-        <div class="panel-body">
-          {{ user.email }}
-          <div span style="float:right;"><a href='#'><span class='glyphicon glyphicon-pencil'></span> Edit </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel panel-info" style="margin: 1em;">
-        <div class="panel-heading">
-          <h3 class="panel-title">Username</h3>
-        </div>
-        <div class="panel-body">
-          {{ user.username }}
-
-          <div span style="float:right;"><a href='#'><span class='glyphicon glyphicon-pencil'></span> Edit </a>
-          </div>
-        </div>
-      </div>
+<div class="container">
+  <h1 style="text-align: center;"><a href="{% url 'editprofile' %}">EditProfile</a></h1>
+ </div>
       <!-- </ul> -->
       <!-- <div class="col-md-6">Total cost</div> -->
       <!-- <div class="container">

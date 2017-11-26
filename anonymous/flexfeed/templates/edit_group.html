@@ -13,13 +13,15 @@
       {% for group in all_user_groups %}
       <a>
         <li class="group">
-          <div class="attribute_block">
-            <img class="attr_img" src={{group.picture}}>
-            <div class="attr_name">
-              <h4>{{group.name}}</h4>
-              <img src="{% static 'Icons/delete.png' %}">
+          <a href=" {% url 'edit_group' group.id %} ">
+            <div class="attribute_block">
+              <img class="attr_img" src={{group.picture}}>
+              <div class="attr_name">
+                <h4>{{group.name}}</h4>
+                <img src="{% static 'Icons/delete.png' %}">
+              </div>
             </div>
-          </div>
+          </a>
         </li>
       </a>
       {% endfor %}

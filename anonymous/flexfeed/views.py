@@ -37,7 +37,8 @@ def groups(request):
         context={'all_user_groups': all_user_groups}
     )
 
-def editgroups(request):
+
+def edit(request):
 
     all_user_groups = None
     user = None
@@ -46,14 +47,34 @@ def editgroups(request):
         user = request.user
         all_user_groups = request.user.profile.media_group.all()
 
-    members = all_user_groups[0].members.all()
     all_members = Member.objects.all()
 
     return render(
         request,
-        'editgroups.html',
-        context={'all_user_groups': all_user_groups, 'all_members': all_members, 'group_members':members,'user':user}
+        'edit.html',
+        context={'all_user_groups': all_user_groups, 'all_members': all_members,'user':user}
     )
+
+
+def edit_group(request, pk):
+
+    if pk is None:
+        return edit(request)
+
+    print('test ', pk)
+    if request.user.is_authenticated():
+        user = request.user
+        all_user_groups = request.user.profile.media_group.all()
+        media_group = get_object_or_404(Media_Group, pk=pk)
+        group_members = media_group.members.all()
+
+    return render(
+        request,
+        'edit_group.html',
+        context={'all_user_groups': all_user_groups, 'media_group': media_group, 'user': user,
+                 'group_members': group_members}
+    )
+
 
 def discover(request):
 
@@ -87,3 +108,42 @@ def login(request):
         'login.html',
         context={'all_groups': all_groups}
     )
+
+
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+
+from .forms import EditProfileForm
+
+def edit_Profile(request):
+    user = request.user
+    form = EditProfileForm()
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = EditProfileForm(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            if form.cleaned_data['new_UserName']:
+                user.username = form.cleaned_data['new_UserName']
+            if form.cleaned_data['new_FirstName']:
+                user.first_name = form.cleaned_data['new_FirstName']
+            if form.cleaned_data['new_LastName']:
+                user.last_name = form.cleaned_data['new_LastName']
+            if form.cleaned_data['new_Email']:
+                user.email = form.cleaned_data['new_Email']
+            if form.cleaned_data['new_Bio']:
+                user.profile.bio = form.cleaned_data['new_Bio']
+            if form.cleaned_data['new_ProfilePicture']:
+                user.profile.profile_picture = form.cleaned_data['new_ProfilePicture']
+            if form.cleaned_data['new_Password'] and (form.cleaned_data['new_Password'] == form.cleaned_data['new_ConfirmPassword']):
+                user.set_password(form.cleaned_data['new_Password'])
+            user.save()
+            return render(request, 'settings.html', {'form': form, 'user': user})
+
+
+
+
+    return render(request, 'editprofile.html', {'form': form, 'user': user})

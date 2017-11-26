@@ -1,0 +1,50 @@
+{% extends "flexfeed_template.html" %} {% load static%} {% block groups_active %}class='active'{% endblock %} {% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/editgroups.css' %}"> {% endblock %} {% block content %}
+
+<center>
+  <h1 style="font-size:80px;">Edit Groups</h1>
+</center>
+<!-- <input id="search" autocomplete="on" type="text" class="form-control" name="searchpersongroup" placeholder="Search for Person or Group" required autofocus=""> -->
+<div>
+  <div id="groups" style="padding:0px;">
+    <center style="margin:0px;">
+      <h3 style="margin:0px;">Select Group to Edit</h3></center>
+    <ul>
+      {% for group in all_user_groups %}
+      <a>
+        <li class="group">
+          <a href=" {% url 'edit_group' group.id %} ">
+            <div class="attribute_block">
+              <img class="attr_img" src={{group.picture}}>
+              <div class="attr_name">
+                <h4>{{group.name}}</h4>
+                <img src="{% static 'Icons/delete.png' %}">
+              </div>
+            </div>
+          </a>
+        </li>
+      </a>
+      {% endfor %}
+      <a>
+        <li class="group">
+          <div class="attribute_block">
+            <img class="attr_img" src="{% static 'Icons/createNew.png' %}">
+            <div class="attr_name">
+              <h4>Click to make new Group</h4>
+              <img src="{% static 'Icons/delete.png' %}">
+            </div>
+          </div>
+        </li>
+      </a>
+    </ul>
+  </div>
+  <div class="verticalLine">
+
+  </div>
+
+</div>
+<!-- <div class="addGroup" style="padding-bottom:60px;">
+        <input id="groupName" type="text" class="form-control" name="searchgroup" placeholder="Enter Group Name"/>
+        <button type="button">Add Group</button>
+    </div> -->
+{% endblock %}
