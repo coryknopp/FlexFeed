@@ -1,143 +1,118 @@
-#search  {
-    position: fixed;
-    top: 25%;
-    left: 39.5%;
-    transform: translate(-50%, -50%);
-    size: 40;
-    height: 40px;
-    border-radius: 10px;
-    width:400px;
+#search {
+  position: fixed;
+  top: 25%;
+  left: 39.5%;
+  transform: translate(-50%, -50%);
+  size: 40;
+  height: 40px;
+  border-radius: 10px;
+  width: 400px;
 }
 
-h1 {
-    font-size: 1em;
+.addGroup {
+  position: fixed;
+  top: 65%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  width: 550px;
 }
 
-h2 {
-    margin-left: 310px;
-    margin-top: 50px;
+#groupName {
+  size: 40;
+  height: 40px;
+  border-radius: 10px;
+  width: 400px;
+  display: inline-block;
 }
 
-.addGroup  {
-    position: fixed;
-    top: 65%;
-    left: 45%;
-    transform: translate(-50%, -50%);
-    width: 550px;
+button {
+  border-radius: 5px;
+  background-color: #85adad;
+  display: inline-block;
+  margin-left: 10px;
 }
 
-#groupName{
-    size: 40;
-    height: 40px;
-    border-radius: 10px;
-    width:400px;
-    display: inline-block;
-}
+#members {
+  float:right;
+  overflow:visible;
 
-button{
-    border-radius: 5px;
-    background-color:#85adad;
-    display: inline-block;
-    margin-left: 10px;
-}
-
-#members{
-    background:#1111;
-    position: fixed;
-    overflow:scroll;
-/*    white-space: nowrap;*/
-    top: 30%;
-    left: 20%;
-    width: 810px;
-    height: 200px;
-}
-
-.member{
-    position: relative;
-    display:inline-block;
-    margin:10px;
-    height: 150px;
-    width:150px;
-}
-
-.member h5 {
-    position: absolute;
-    bottom: 0px;
-    color:white;
-    width:100%;
-    height:20%;
-    font-size: 20px;
-    padding-left: 5px;
-    bottom:-10px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.member h6 {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.5);
-    top: 0px;
-    right: 7px;
-    color:white;
-}
-
-.make button{
-    position: relative;
-    display:inline;
-}
-
-.member img{
-    height: 100%;
-    width: 100%;
-    border-radius:5px;
+  width: 50%;
+  height: 200px;
 }
 
 
-.member:hover{
-    -webkit-filter: brightness(90%);
+/*Group styling*/
+
+#groups {
+  float: left;
+  position: fixed;
+  border-right: thin solid black;
+  white-space: initial;
+  width: 50%;
+  height: 75%;
 }
 
-#groups{
-    background:#1111;
-    position: fixed;
-    overflow:scroll;
-    white-space: nowrap;
-    top: 65%;
-    left: 20%;
-    right: 20%;
-    width: 810px;
-    height: 200px;
+/*Group elements*/
+
+.group {
+  width: 175px;
+  height: 175px;
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  margin: 15px;
+}
+.member {
+  width: 125px;
+  height: 125px;
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  margin: 15px;
 }
 
-.group{
-    position: relative;
-    display:inline-block;
+.attribute_block {
+  width:100%;
+  height:100%;
+  position: absolute;
+}
+.attr_img {
+  width:100%;
+  height:100%;
+  border-radius: 10px;
+  position: absolute;
+  /*display: block;*/
+}
+.attr_name {
+  /*text color*/
+  color:white;
+  position:absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  /*Change shade*/
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  -webkit-transition: opacity 0.6s;
+  -moz-transition: opacity 0.6s;
+  transition: opacity 0.6s;
 
-    height: 150px;
-    width:150px;
+}
+.attr_name h4{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin:0px;
+  transform: translateX(-50%) translateY(-50%);
+}
+.attr_name:hover {
+  opacity: 1;
 }
 
-.group img{
-    height: 100%;
-    width: 100%;
-    border-radius:5px;
-}
-
-.group h4 {
-    position: absolute;
-    width: 100%;
-    bottom: -10px;
-    left: 0px;
-    color:white;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.group:hover{
-    background: rgba(0, 0, 0, 0.5);
-    opacity:0.75;
-    border-radius: 5px;
-    -webkit-filter: brightness(90%);
+.verticalLine {
+  border-left: thick solid #ff0000;
 }

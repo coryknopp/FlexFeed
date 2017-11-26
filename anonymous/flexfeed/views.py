@@ -34,22 +34,25 @@ def index(request):
 def groups(request):
     all_groups = None
     if request.user.is_authenticated():
-        all_groups = request.user.profile.media_group.all()
+        all_user_groups = request.user.profile.media_group.all()
     return render(
         request,
         'groups.html',
-        context={'all_groups': all_groups}
+        context={'all_user_groups': all_user_groups}
     )
 
 def editgroups(request):
 
-    all_groups = Media_Group.objects.all()
+    all_user_groups = None
+    if request.user.is_authenticated():
+        all_user_groups = request.user.profile.media_group.all()
+
     all_members = Member.objects.all()
 
     return render(
         request,
         'editgroups.html',
-        context={'all_groups': all_groups, 'all_members': all_members}
+        context={'all_user_groups': all_user_groups, 'all_members': all_members}
     )
 
 def discover(request):
