@@ -1,32 +1,80 @@
-{% extends "flexfeed_template.html" %}
-{% load static%}
+{% extends "flexfeed_template.html" %} {% load static%} {% block groups_active %}class='active'{% endblock %} {% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/editgroups.css' %}"> {% endblock %} {% block content %}
 
-{% block extra_css %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/editgroups.css' %}">
-{% endblock %}
+<center>
+  <h1 style="font-size:80px;">Edit Groups</h1>
+</center>
+<!-- <input id="search" autocomplete="on" type="text" class="form-control" name="searchpersongroup" placeholder="Search for Person or Group" required autofocus=""> -->
+<div>
+  <div id="groups" style="padding:0px;">
+    <center style="margin:0px;">
+      <h3 style="margin:0px;">Select Group to Edit</h3></center>
+    <ul>
+      {% for group in all_user_groups %}
+      <a>
+        <li class="group">
+          <div class="attribute_block">
+            <img class="attr_img" src={{group.picture}}>
+            <div class="attr_name">
+              <h4>{{group.name}}</h4>
+              <img src="{% static 'Icons/delete.png' %}">
+            </div>
+          </div>
+        </li>
+      </a>
+      {% endfor %}
+      <a>
+        <li class="group">
+          <div class="attribute_block">
+            <img class="attr_img" src="{% static 'Icons/createNew.png' %}">
+            <div class="attr_name">
+              <h4>Click to make new Group</h4>
+              <img src="{% static 'Icons/delete.png' %}">
+            </div>
+          </div>
+        </li>
+      </a>
+    </ul>
+  </div>
+  <div class="verticalLine">
 
-{% block content %}
-
-    <h1 style="font-size:80px">Edit Groups</h1>
-
-    <input id="search" autocomplete="on" type="text" class="form-control" name="searchpersongroup" placeholder="Search for Person or Group" required autofocus="" />
-    <div id = "members" style="margin-top: 1vh;">
-        <ul>
-          {% for member in all_members %}
-            <li class="member"><h6 class="X">X</h6><h5>{{member.name}}</h5>  <img src={{member.profile_picture}}></li>
-          {% endfor %}
-        </ul>
+  </div>
+  <div id="members">
+    <div class="edit_toolbar">
+      <input id="group_name" placeholder='{{all_user_groups.0}}'/>
+      <button type="button"><img src="{% static 'Icons/save.png'%}"</button>
+      <!-- <input id="group_name" type="text" class="form-control" name="searchgroup" placeholder="Enter Group Name"/> -->
     </div>
-    <div class="addGroup" style="padding-bottom:60px;">
+    <ul>
+      {% for member in group_members %}
+      <a>
+        <li class="member">
+          <div class="attribute_block">
+            <img class="attr_img" src={{member.profile_picture}}>
+            <div class="attr_name">
+              <h4>{{member.name}}</h4>
+              <img src="{% static 'Icons/delete.png' %}">
+            </div>
+          </div>
+        </li>
+      </a>
+      {% endfor %}
+      <a>
+        <li class="member">
+          <div class="attribute_block">
+            <img class="attr_img" src="{% static 'Icons/createNew.png' %}">
+            <div class="attr_name">
+              <h4>Click to add to Group</h4>
+              <img src="{% static 'Icons/delete.png' %}">
+            </div>
+          </div>
+        </li>
+      </a>
+    </ul>
+  </div>
+</div>
+<!-- <div class="addGroup" style="padding-bottom:60px;">
         <input id="groupName" type="text" class="form-control" name="searchgroup" placeholder="Enter Group Name"/>
         <button type="button">Add Group</button>
-    </div>
-
-    <div id = "groups" style="padding:0px;">
-        <ul>
-          {% for group in all_groups %}
-            <li class="group" style="padding:0px;"><h4>{{group.name}}</h4><img src={{group.picture}}></li>
-          {% endfor %}
-        </ul>
-    </div>
+    </div> -->
 {% endblock %}

@@ -18,10 +18,6 @@ def index(request):
     TWT_Posts=Post.objects.filter(site__contains='TWT')
     FB_Posts = Post.objects.filter(site__contains='FB')
     all_Posts=Post.objects.all()
-
-    print(user)
-    print(user.profile.profile_picture)
-
     return render(
         request,
         'home.html',
@@ -34,22 +30,29 @@ def index(request):
 def groups(request):
     all_groups = None
     if request.user.is_authenticated():
-        all_groups = request.user.profile.media_group.all()
+        all_user_groups = request.user.profile.media_group.all()
     return render(
         request,
         'groups.html',
-        context={'all_groups': all_groups}
+        context={'all_user_groups': all_user_groups}
     )
 
 def editgroups(request):
 
-    all_groups = Media_Group.objects.all()
+    all_user_groups = None
+    user = None
+
+    if request.user.is_authenticated():
+        user = request.user
+        all_user_groups = request.user.profile.media_group.all()
+
+    members = all_user_groups[0].members.all()
     all_members = Member.objects.all()
 
     return render(
         request,
         'editgroups.html',
-        context={'all_groups': all_groups, 'all_members': all_members}
+        context={'all_user_groups': all_user_groups, 'all_members': all_members, 'group_members':members,'user':user}
     )
 
 def discover(request):

@@ -1,111 +1,100 @@
-{% extends "flexfeed_template.html" %}
-{% load static %}
-
+{% extends "flexfeed_template.html" %} {% load static %}
+{% block index_active %}class='active'{% endblock %}
 {% block content %}
-  <div id="stockmenu" class="stockmenu" style="text-align:center">
 
-  {% for member in unique_Members %}
-    {% if member.stock %}
-      <div> {{ member.stock.company }} <br> {{ member.stock.value }}
-      {% if member.stock.trend %} <img src="{% static 'Icons/green.png' %}"></div>
-      {% else %} <img src="{% static 'Icons/red.png' %}"></div>
-      {% endif %}
-    {% endif %}
-  {% endfor %}
+<div id="stockmenu" class="stockmenu" style="text-align:center">
+  {% for member in unique_Members %} {% if member.stock %}
+  <div> {{ member.stock.company }} <br> {{ member.stock.value }} {% if member.stock.trend %} <img src="{% static 'Icons/green.png' %}"></div>
+  {% else %} <img src="{% static 'Icons/red.png' %}"></div>
+{% endif %} {% endif %} {% endfor %}
+</div>
 
-  </div>
+<row>
 
-  <row>
-      <div class='col-md-3 group'>
-        <div class='group-body'>
-          <div class="checkbox">
-            <strong> Show Stocks </strong>
-            <input type="checkbox" name="checkbox" id="checkbox" checked="checked" style="margin-left:2vh"/>
-          </div>
-          <strong> Current Group: </strong> <p style="display:inline" id="currGroup">{{ user.profile.media_group.all.0 }} </p>
+  <div class='col-md-3 group'>
+    <div class='group-body'>
 
-          <div class="container" style="margin-top:1vh">
-            <div class="dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+      <div class="checkbox">
+        <strong> Show Stocks </strong>
+        <input type="checkbox" name="checkbox" id="checkbox" checked="checked" style="margin-left:2vh" />
+      </div>
+      <strong> Current Group: </strong>
+      <p style="display:inline" id="currGroup">{{ user.profile.media_group.all.0 }} </p>
+
+      <div class="container" style="margin-top:1vh">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                 Groups
               <span class="caret"></span>
               </button>
 
-              <ul class="dropdown-menu">
-                {% for group in all_Groups %}
-                <li><a href="#">{{group.name}}</a></li>
-                {% endfor %}
-              </ul>
+          <ul class="dropdown-menu">
+            {% for group in all_Groups %}
+            <li><a href="#">{{group.name}}</a></li>
+            {% endfor %}
+          </ul>
 
-              </div>
-          </div>
         </div>
       </div>
+    </div>
+  </div>
 
 
-      <script>
+  <script>
+    $(".dropdown-menu").on('click', 'li a', function() {
+      $('#currGroup').text($(this).text());
+    });
 
-       $(".dropdown-menu").on('click', 'li a', function(){
-         $('#currGroup').text($(this).text());
-       });
+    var stockCopy = $('#stockmenu');
 
-       var stockCopy= $('#stockmenu');
+    $("#checkbox").on('click', function() {
+      if ($('#checkbox').is(":checked")) {
+        $('body').append(stockCopy);
+        $("#checkbox").prop(":checked", true);
+      } else {
+        $("#stockmenu").remove();
+        $("#checkbox").prop(':checked', false);
+      }
+    });
+  </script>
 
-       $("#checkbox").on('click', function(){
-         if($('#checkbox').is(":checked")) {
-           $('body').append(stockCopy);
-           $("#checkbox").prop(":checked", true );
-         }
-         else {
-           $("#stockmenu").remove();
-           $("#checkbox").prop(':checked', false );
-         }
-       });
-      </script>
+  <div class='col-md-6 post-column' id="first">
 
-      <div class='col-md-6 post-column' id="first">
-
-      {% for member in unique_Members %}
-
-        {% for post in member.post.all %}
-          {% if post.site == 'IG' %}
-          <div class='post instagram'>
-            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-              <div style="padding:8px;">
-                <p>
-                  <a href={{post.link}} style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank"></a>
-                </p>
-              </div>
-            </blockquote>
-            <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
-          </div>
-
-          {% elif post.site == 'TWT' %}
-          <div class='post twitter'>
-            <div class='twitter-frame'>
-              <blockquote class="twitter-tweet" data-lang="en" align="center">
-                <a href={{post.link}}></a>
-              </blockquote>
-            </div>
-          </div>
-          <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-          {% elif post.site == 'FB' %}
-          <div class='post facebook' style="text-align: center; width: 100%;">
-            <iframe src={{post.link}} width="618" height="664" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="false"></iframe>
-          </div>
-
-          {% endif %}
-
-        {% endfor %}
-      {% endfor %}
-
+    {% for member in unique_Members %} {% for post in member.post.all %} {% if post.site == 'IG' %}
+    <div class='post instagram'>
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+        <div style="padding:8px;">
+          <p>
+            <a href={{post.link}} style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank"></a>
+          </p>
+        </div>
+      </blockquote>
+      <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
     </div>
 
+    {% elif post.site == 'TWT' %}
+    <div class='post twitter'>
+      <div class='twitter-frame'>
+        <blockquote class="twitter-tweet" data-lang="en" align="center">
+          <a href={{post.link}}></a>
+        </blockquote>
+      </div>
+    </div>
+    <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-  </row>
+    {% elif post.site == 'FB' %}
+    <div class='post facebook' style="text-align: center; width: 100%;">
+      <iframe src={{post.link}} width="618" height="664" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="false"></iframe>
+    </div>
+
+    {% endif %} {% endfor %} {% endfor %}
+
+  </div>
+
+
+
+</row>
 
 
 {% endblock %}
