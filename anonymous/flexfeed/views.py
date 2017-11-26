@@ -37,6 +37,7 @@ def groups(request):
         context={'all_user_groups': all_user_groups}
     )
 
+
 def edit(request):
 
     all_user_groups = None
@@ -54,6 +55,27 @@ def edit(request):
         'edit.html',
         context={'all_user_groups': all_user_groups, 'all_members': all_members, 'group_members':members,'user':user}
     )
+
+
+def edit_group(request, pk):
+
+    if pk is None:
+        return edit(request)
+
+    print('test ', pk)
+    if request.user.is_authenticated():
+        user = request.user
+        all_user_groups = request.user.profile.media_group.all()
+        media_group = get_object_or_404(Media_Group, pk=pk)
+        group_members = media_group.members.all()
+
+    return render(
+        request,
+        'edit_group.html',
+        context={'all_user_groups': all_user_groups, 'media_group': media_group, 'user': user,
+                 'group_members': group_members}
+    )
+
 
 def discover(request):
 

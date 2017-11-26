@@ -15,6 +15,8 @@ urlpatterns += [
     url(r'^editprofile/', views.edit_Profile, name='editprofile'),
 ]
 
-#urlpatterns += [
-#    url(r'^groups/(?P<pk>[-\w]+)/edit/$', views.edit_groups, name='edit_groups'),
-#]
+# url mapping for editing specific groups
+urlpatterns += [
+    url(r'^groups/edit_group(?:/(?P<pk>[-\w]+))?/$', views.edit_group, name='edit_group'),
+
+]
