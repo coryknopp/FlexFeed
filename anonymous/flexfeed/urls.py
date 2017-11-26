@@ -10,3 +10,7 @@ urlpatterns = [
     url(r'^settings/$', views.settings, name='settings'),
     url(r'^groups/edit/$', views.editgroups, name='edit')
 ]
+
+urlpatterns += [
+    url(r'^editprofile/', views.edit_Profile, name='editprofile'),
+]

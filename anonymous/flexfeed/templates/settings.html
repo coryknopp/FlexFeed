@@ -11,7 +11,7 @@
 
 <header class="text-center">
     <h1 class='title'>Manage Your Settings</h1>
-    <h5>Here are your user settings. Review and edit your profile, feed, and general preferences from this window.</h5>
+    <h5>Here are your user settings. Review and edit your profile from this window.</h5>
 </header>
 
 <div class="container">
@@ -23,9 +23,7 @@
  	<ul class="nav nav-pills nav-stacked admin-menu" style="margin: 1em;">
 
  		<li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
-		<li><a href="" data-target-id="change-password"><i class="glyphicon glyphicon-list-alt"></i> Feed </a></li>
-		<li><a href="" data-target-id="settings"><i class="glyphicon glyphicon-cog"></i> Groups </a></li>
-<!-- 		<li><a href="" data-target-id="logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li> -->
+
 	</ul>
  </div>
 
@@ -36,8 +34,6 @@
  			</div>
  	<div class="panel-body">
  		{{ user.get_full_name }}
- 		<div span style="float:right;"><a href='#'><span class='glyphicon glyphicon-pencil'></span> Edit </a>
- 		</div>
  	</div>
  	</div>
 
@@ -49,8 +45,6 @@
 
 		 <div class="panel-body">
       {{ user.email }}
-		 	<div span style="float:right;"><a href='#'><span class='glyphicon glyphicon-pencil'></span> Edit </a>
-		 	</div>
 		 </div>
 	 </div>
 
@@ -60,118 +54,21 @@
  		</div>
 	 	<div class="panel-body">
 	 		{{ user.username }}
-
-		 	<div span style="float:right;"><a href='#'><span class='glyphicon glyphicon-pencil'></span> Edit </a>
-		 	</div>
 	 	</div>
  	</div>
- <!-- </ul> -->
- <!-- <div class="col-md-6">Total cost</div> -->
-<div class="container">
-    <h1>Edit Profile</h1>
-  	<hr>
-	<div class="row">
-      <!-- left column -->
-      <div class="col-md-3">
-        <div class="text-center">
-          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-          <h6>Upload a different photo...</h6>
 
-          <input type="file" class="form-control">
-        </div>
-      </div>
-
-      <!-- edit form column -->
-      <div class="col-md-9 personal-info">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a>
-          <i class="fa fa-coffee"></i>
-          This is an <strong>.alert</strong>. Use this to show important messages to the user.
-        </div>
-        <h3>Personal info</h3>
-
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
-            <label class="col-lg-3 control-label">First name:</label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" value={{user.first_name}}>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Last name:</label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" value={{user.last_name}}>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Company:</label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" value="{{user.groups}}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Email:</label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" value={{user.email}}>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Time Zone:</label>
-            <div class="col-lg-8">
-              <div class="ui-select">
-                <select id="user_time_zone" class="form-control">
-                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                  <option value="Alaska">(GMT-09:00) Alaska</option>
-                  <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                  <option value="Arizona">(GMT-07:00) Arizona</option>
-                  <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                  <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                  <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Username:</label>
-            <div class="col-md-8">
-              <input class="form-control" type="text" value={{user.username}}>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Password:</label>
-            <div class="col-md-8">
-              <input class="form-control" type="password" value="11111122333">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Confirm password:</label>
-            <div class="col-md-8">
-              <input class="form-control" type="password" value="11111122333">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-8">
-              <input type="button" class="btn btn-primary" value="Save Changes">
-              <span></span>
-              <input type="reset" class="btn btn-default" value="Cancel">
-            </div>
-          </div>
-        </form>
-      </div>
+  <div class="panel panel-info" style="margin: 1em;">
+    <div class="panel-heading">
+      <h3 class="panel-title">Bio</h3>
+    </div>
+  <div class="panel-body">
+    {{ user.profile.bio }}
+  </div>
   </div>
 </div>
-<hr>
 
-
-
- </div>
-
-
-
-
- </div>
+<div class="container">
+  <h1 style="text-align: center;"><a href="{% url 'editprofile' %}">EditProfile</a></h1>
  </div>
 
 
