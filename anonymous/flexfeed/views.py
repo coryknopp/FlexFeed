@@ -37,7 +37,7 @@ def groups(request):
         context={'all_user_groups': all_user_groups}
     )
 
-def editgroups(request):
+def edit(request):
 
     all_user_groups = None
     user = None
@@ -51,7 +51,7 @@ def editgroups(request):
 
     return render(
         request,
-        'editgroups.html',
+        'edit.html',
         context={'all_user_groups': all_user_groups, 'all_members': all_members, 'group_members':members,'user':user}
     )
 
