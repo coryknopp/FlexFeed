@@ -1,6 +1,7 @@
 {% extends "flexfeed_template.html" %}
+{% block discovery_active %}class='active'{% endblock %}
 {% load static %}
- 
+
 {% block extra_css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/discovery.css' %}">
 {% endblock %}
@@ -13,7 +14,7 @@
 <div class="col-sm-10 col-sm-offset-1">
     <div class='grid'>
 
-        
+
 {% for group in all_groups %}
 
     {% if forloop.counter is 1 %}
@@ -24,7 +25,7 @@
 
     {% elif forloop.counter is 3 %}
     <div class='cell cell_purple'>
-       
+
     {% elif forloop.counter is 4 %}
     <div class='cell cell_orange'>
 
@@ -38,8 +39,8 @@
     </div>
 
     <div class='subscribe glyphicon glyphicon-plus-sign'>
-        <div style="font-size: 14px; text-align: center"> 
-    
+        <div style="font-size: 14px; text-align: center">
+
             {% for member in group.members.all %}
             {{member.name}}
             <br>
@@ -66,7 +67,7 @@
 <div class="col-sm-10 col-sm-offset-1">
     <div class='grid'>
 
-        
+
 {% for group in all_groups %}
 
     {% if forloop.counter is 1 %}
@@ -77,13 +78,13 @@
 
     {% elif forloop.counter is 3 %}
     <div class='cell cell_purple'>
-       
+
     {% elif forloop.counter is 4 %}
     <div class='cell cell_orange'>
 
     {% elif forloop.counter is 5 %}
     <div class='cell cell_green'>
-    
+
     {% endif %}
 
     <div class='cell_title' style="padding-bottom: 2vh; font-weight: bold">
@@ -91,8 +92,8 @@
     </div>
 
     <div class='subscribe glyphicon glyphicon-plus-sign'>
-        <div style="font-size: 14px; text-align: center"> 
-    
+        <div style="font-size: 14px; text-align: center">
+
             {% for member in group.members.all %}
             {{member.name}}
             <br>

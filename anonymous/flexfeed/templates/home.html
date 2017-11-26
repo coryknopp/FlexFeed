@@ -1,4 +1,6 @@
-{% extends "flexfeed_template.html" %} {% load static %} {% block content %}
+{% extends "flexfeed_template.html" %} {% load static %}
+{% block index_active %}class='active'{% endblock %}
+{% block content %}
 
 <div id="stockmenu" class="stockmenu" style="text-align:center">
   {% for member in unique_Members %} {% if member.stock %}
@@ -11,7 +13,7 @@
 
   <div class='col-md-3 group'>
     <div class='group-body'>
-      
+
       <div class="checkbox">
         <strong> Show Stocks </strong>
         <input type="checkbox" name="checkbox" id="checkbox" checked="checked" style="margin-left:2vh" />

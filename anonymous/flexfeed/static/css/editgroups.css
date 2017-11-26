@@ -1,4 +1,4 @@
-#search {
+/*#search {
   position: fixed;
   top: 25%;
   left: 39.5%;
@@ -30,30 +30,59 @@ button {
   background-color: #85adad;
   display: inline-block;
   margin-left: 10px;
+}*/
+
+.edit_toolbar {
+  position: relative;
+  margin:  2% 6% 2% 8%
+}
+.edit_toolbar input {
+  height: 40px;
+  min-width: 30%;
+  background-color: transparent;
+  color: gray;
+  font-size: 25px;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid #333333;
+  font-family: sans-serif;
+}
+.edit_toolbar button {
+  right: 10%;
+  position: absolute;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  height:100%;
+}
+.edit_toolbar img {
+  background-color: transparent;
+  border-radius: 10px;
+  height: 100%;
+  object-fit: contain;
 }
 
-#members {
-  float:right;
-  overflow:visible;
-
-  width: 50%;
-  height: 200px;
+.edit_toolbar img:hover {
+  background-color: rgba(0, 0, 0, 1);
+  opacity: .6;
+  -webkit-transition: opacity 0.6s;
+  -moz-transition: opacity 0.6s;
+  transition: opacity 0.6s;
 }
+
+
 
 
 /*Group styling*/
-
 #groups {
+  position:fixed;
   float: left;
-  position: fixed;
-  border-right: thin solid black;
+  border-right: medium ridge grey;
   white-space: initial;
   width: 50%;
   height: 75%;
 }
-
-/*Group elements*/
-
 .group {
   width: 175px;
   height: 175px;
@@ -62,7 +91,16 @@ button {
   padding: 0;
   margin: 15px;
 }
+/*Member styling*/
+#members {
+  float:right;
+  white-space: initial;
+  width: 50%;
+  height: 75%;
+}
 .member {
+  white-space: initial;
+  overflow: scroll;
   width: 125px;
   height: 125px;
   display: inline-block;
@@ -83,14 +121,14 @@ button {
   position: absolute;
   /*display: block;*/
 }
+a {
+  cursor: pointer;
+}
 .attr_name {
   /*text color*/
   color:white;
+  /*Section fill*/
   position:absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -100,19 +138,22 @@ button {
   -webkit-transition: opacity 0.6s;
   -moz-transition: opacity 0.6s;
   transition: opacity 0.6s;
-
 }
 .attr_name h4{
   position:absolute;
-  top:50%;
-  left:50%;
-  margin:0px;
+  top:40%;
+  left:40%;
   transform: translateX(-50%) translateY(-50%);
+}
+.attr_name img{
+  height:20px;
+  width:20px;
+  filter: invert(100%);
+  font-size:10px;
+  position:absolute;
+  top:5%;
+  right:5%;
 }
 .attr_name:hover {
   opacity: 1;
-}
-
-.verticalLine {
-  border-left: thick solid #ff0000;
 }
