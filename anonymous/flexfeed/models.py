@@ -74,7 +74,6 @@ class Media_Group(models.Model):
     Model representing a group
     """
     members = models.ManyToManyField(Member, help_text="Select a member")
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     subscribers = models.IntegerField()
     views = models.IntegerField()
     popularity = models.IntegerField()

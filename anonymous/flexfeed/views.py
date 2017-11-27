@@ -150,7 +150,6 @@ def edit_members(request,pk):
     if(pk=="-1"):
         #Create new group
         group_instance=Media_Group()
-        GroupForm = modelform_factory(Book, fields=("author", "title"))
     else:
         #If we're selecting an existing group from the list
         group_instance=get_object_or_404(Media_Group, pk = pk)
@@ -174,7 +173,7 @@ def edit_members(request,pk):
     else:
         #If we're going to actually edit the page lets load up some more neccessary pre-existing data
         if request.user.is_authenticated():
-            group_members = media_group.members.all()
+            group_members = group_instance.members.all()
         return render(
             request,
             'edit_group.html',

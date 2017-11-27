@@ -47,7 +47,7 @@
           {% csrf_token %}
           {% for field in form %}
             {% if field.label is "group_name" %}
-              <input for="{{form.group_name}}"id="group_name" placeholder={{media_group}}/>
+              <input for="{{form.group_name}}" placeholder="{{media_group}}"/>
             {% elif field.label is "query"%}
               {{field}}
             {% endif %}
