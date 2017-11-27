@@ -20,5 +20,5 @@ urlpatterns += [
 ]
 # url mapping for viewing specific groups in home page
 urlpatterns += [
-    url(r'^(?:/(?P<pk>[-\w]+))?/$', views.index, name='view_group'),
+    url(r'^(?:(?P<pk>[-\w]+))?/$', views.index, name='view_group'),
 ]
