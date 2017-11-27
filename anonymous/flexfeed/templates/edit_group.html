@@ -47,9 +47,9 @@
           {% csrf_token %}
           {% for field in form %}
             {% if field.label == "group_name" %}
-              <input value="{{group_instance.name}}" placeholder="Enter group name" for={{form.group_name}}>
+              <input value="{{group_instance.name}}" placeholder="Enter group name" for={{field}}
             {% elif field.label == "picture"%}
-              <input value={{group_instance.picture}} placeholder="Enter img URL(http)" for={{form.picture}}>
+              <input value="{{group_instance.picture}}" placeholder="Enter img URL (http)" for={{field}}
             {% elif field.label == "query"%}
               {{field}}
             {% endif %}
