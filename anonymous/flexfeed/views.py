@@ -158,9 +158,14 @@ def edit_members(request,pk):
     #If we are editing or creating a new page we will need to submit a form... Lets do that:
     form = GroupForm(request.POST,pk)
     if form.is_valid():
-        group_instance.members = form.cleaned_data['members']
         group_instance.name = form.cleaned_data['group_name']
+        group_instance.subscribers = 1;
+        group_instance.views = 1;
+        group_instance.popularity = 1;
         group_instance.save()
+        group_instance.members = form.cleaned_data['members']
+        group_instance.save()
+        user.profile.media_group.add(group_instance)
         return HttpResponseRedirect(reverse('edit_group') )
 
     #if pk =="-1" then lets create a new Media_Group and create a title and members
@@ -170,6 +175,7 @@ def edit_members(request,pk):
             'edit_group.html',
             context={'form': form, 'group_instance':group_instance,'all_user_groups': all_user_groups, 'user': user,
                      'group_members': group_members,'no_group_selected':False})
+
     else:
         #If we're going to actually edit the page lets load up some more neccessary pre-existing data
         if request.user.is_authenticated():
