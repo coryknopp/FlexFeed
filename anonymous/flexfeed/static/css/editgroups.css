@@ -1,36 +1,3 @@
-/*#search {
-  position: fixed;
-  top: 25%;
-  left: 39.5%;
-  transform: translate(-50%, -50%);
-  size: 40;
-  height: 40px;
-  border-radius: 10px;
-  width: 400px;
-}
-
-.addGroup {
-  position: fixed;
-  top: 65%;
-  left: 45%;
-  transform: translate(-50%, -50%);
-  width: 550px;
-}
-
-#groupName {
-  size: 40;
-  height: 40px;
-  border-radius: 10px;
-  width: 400px;
-  display: inline-block;
-}
-
-button {
-  border-radius: 5px;
-  background-color: #85adad;
-  display: inline-block;
-  margin-left: 10px;
-}*/
 
 .edit_toolbar {
   position: relative;
@@ -80,7 +47,7 @@ button {
   float: left;
   border-right: medium ridge grey;
   white-space: initial;
-  width: 50%;
+  width: 40%;
   height: 75%;
 }
 .group {
@@ -95,7 +62,7 @@ button {
 #members {
   float:right;
   white-space: initial;
-  width: 50%;
+  width: 60%;
   height: 75%;
 }
 .member {
