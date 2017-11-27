@@ -164,6 +164,7 @@ def edit_members(request,pk):
         group_instance.popularity = 1;
         group_instance.save()
         group_instance.members = form.cleaned_data['members']
+        group_instance.picture = form.cleaned_data['picture']
         group_instance.save()
         user.profile.media_group.add(group_instance)
         return HttpResponseRedirect(reverse('edit_group') )
@@ -185,3 +186,8 @@ def edit_members(request,pk):
             'edit_group.html',
             context={'form': form, 'group_instance':group_instance,'all_user_groups': all_user_groups, 'user': user,
                      'group_members': group_members,'no_group_selected':False})
+
+def delete(request,pk):
+    group_instance=get_object_or_404(Media_Group, pk = pk)
+    group_instance.delete()
+    return HttpResponseRedirect(reverse('edit_group') )

@@ -16,8 +16,8 @@
               <img class="attr_img" src={{group.picture}}>
               <div class="attr_name">
                 <h4>{{group.name}}</h4>
-                <img src="{% static 'Icons/delete.png' %}">
               </div>
+              <a class="del" href=" {% url 'delete' group.id %} "><img src="{% static 'Icons/delete.png' %}"></a>
             </div>
           </a>
         </li>
@@ -46,12 +46,13 @@
       <form action="" method="post">
           {% csrf_token %}
           {% for field in form %}
-            {% if field.label is "group_name" %}
-              <input for="{{form.group_name}}" placeholder="{{media_group}}"/>
-            {% elif field.label is "query"%}
+            {% if field.label == "group_name" %}
+              <input value="{{group_instance.name}}" placeholder="Enter group name" for={{field}}
+            {% elif field.label == "picture"%}
+              <input value="{{group_instance.picture}}" placeholder="Enter img URL (http)" for={{field}}
+            {% elif field.label == "query"%}
               {{field}}
             {% endif %}
-            {{field}}
           {% endfor %}
           <button type="submit" value="Submit"><img src="{% static 'Icons/save.png'%}"></button>
       </form>
@@ -75,7 +76,7 @@
           <h1>Select group to edit!</h1>
         </center>
       {% else %}
-        <a>
+        <!-- <a>
           <li class="member">
             <div class="attribute_block">
               <img class="attr_img" src="{% static 'Icons/createNew.png' %}">
@@ -84,7 +85,7 @@
               </div>
             </div>
           </li>
-        </a>
+        </a> -->
       {% endif %}
     </ul>
   </div>
