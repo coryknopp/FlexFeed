@@ -3,7 +3,8 @@ from django import forms
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
-from .models import Profile, Member
+from .models import Profile, Member, Media_Group
+
 
 class EditProfileForm(forms.Form):
     new_UserName = forms.CharField(required=False);
@@ -33,7 +34,10 @@ class EditProfileForm(forms.Form):
         return username
 
 
-# class AddMemberForm(forms.Form):
-#     member_name = forms.CharField(label='Your name', max_length=100)
-#
-#     ModelForm
+class GroupForm(forms.Form):
+    group_name = forms.CharField(label='group_name',max_length=50)
+    members = forms.ModelMultipleChoiceField(label='group_name', queryset=Member.objects.all())
+
+    class Meta:
+        model = Member
+        fields = ['name']

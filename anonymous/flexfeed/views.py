@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Stock, User, Media_Group, Post, Member
+from .forms import GroupForm
 
 
 def index(request,pk=None):
@@ -58,37 +59,6 @@ def groups(request):
 def add_new_member(request):
     all_members = Member.objects.all()
     return None
-
-
-def edit(request,pk=None):
-
-    user=None
-    user, all_user_groups,media_group,group_members = [None]*4
-    if request.user.is_authenticated():
-        user = request.user
-        all_user_groups = request.user.profile.media_group.all()
-
-    if pk is None:
-        return render(
-            request,
-            'edit_group.html',
-            context={'all_user_groups': all_user_groups,'user':user}
-        )
-
-    if request.user.is_authenticated():
-        media_group = get_object_or_404(Media_Group, pk=pk)
-        group_members = media_group.members.all()
-
-    all_members = Member.objects.all()
-
-    return render(
-        request,
-        'edit_group.html',
-        context={'all_user_groups': all_user_groups, 'media_group': media_group, 'user': user,
-                 'group_members': group_members}
-    )
-
-
 
 def discover(request):
 
@@ -161,3 +131,52 @@ def edit_Profile(request):
 
 
     return render(request, 'editprofile.html', {'form': form, 'user': user})
+
+def edit_members(request,pk):
+    user, all_user_groups,media_group,group_members = [None]*4
+    if request.user.is_authenticated():
+        user = request.user
+        all_user_groups = request.user.profile.media_group.all()
+
+    # If no URL argument is passed in lets just render the regular page
+    if pk is None:
+        print("none")
+        return render(
+            request,
+            'edit_group.html',
+            context={'all_user_groups': all_user_groups,'user':user, 'no_group_selected':True})
+
+    group_instance = None
+    if(pk=="-1"):
+        #Create new group
+        group_instance=Media_Group()
+        GroupForm = modelform_factory(Book, fields=("author", "title"))
+    else:
+        #If we're selecting an existing group from the list
+        group_instance=get_object_or_404(Media_Group, pk = pk)
+
+
+    #If we are editing or creating a new page we will need to submit a form... Lets do that:
+    form = GroupForm(request.POST,pk)
+    if form.is_valid():
+        group_instance.members = form.cleaned_data['members']
+        group_instance.name = form.cleaned_data['group_name']
+        group_instance.save()
+        return HttpResponseRedirect(reverse('edit_group') )
+
+    #if pk =="-1" then lets create a new Media_Group and create a title and members
+    if (pk == "-1"):
+        return render(
+            request,
+            'edit_group.html',
+            context={'form': form, 'group_instance':group_instance,'all_user_groups': all_user_groups, 'user': user,
+                     'group_members': group_members,'no_group_selected':False})
+    else:
+        #If we're going to actually edit the page lets load up some more neccessary pre-existing data
+        if request.user.is_authenticated():
+            group_members = media_group.members.all()
+        return render(
+            request,
+            'edit_group.html',
+            context={'form': form, 'group_instance':group_instance,'all_user_groups': all_user_groups, 'user': user,
+                     'group_members': group_members,'no_group_selected':False})

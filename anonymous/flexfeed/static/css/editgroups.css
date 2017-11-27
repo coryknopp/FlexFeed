@@ -15,13 +15,13 @@
   font-family: sans-serif;
 }
 .edit_toolbar button {
-  right: 10%;
+  right: 5%;
   position: absolute;
   background-color: transparent;
   outline: none;
   border: none;
   border-radius: 20px;
-  height:100%;
+  height:60%;
 }
 .edit_toolbar img {
   background-color: transparent;

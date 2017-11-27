@@ -7,8 +7,6 @@
 <!-- <input id="search" autocomplete="on" type="text" class="form-control" name="searchpersongroup" placeholder="Search for Person or Group" required autofocus=""> -->
 <div>
   <div id="groups" style="padding:0px;">
-    <center style="margin:0px;">
-      <h3 style="margin:0px;">Select Group to Edit</h3></center>
     <ul>
       {% for group in all_user_groups %}
       <a>
@@ -25,26 +23,38 @@
         </li>
       </a>
       {% endfor %}
-      <a>
-        <li class="group">
+      <li class="group">
+        <a href=" {% url 'edit_group' -1 %} ">
           <div class="attribute_block">
             <img class="attr_img" src="{% static 'Icons/createNew.png' %}">
             <div class="attr_name">
               <h4>Click to make new Group</h4>
             </div>
           </div>
-        </li>
+        </a>
+      </li>
       </a>
     </ul>
   </div>
   <div class="verticalLine">
 
   </div>
+
+
   <div id="members">
     <div class="edit_toolbar">
-      <input id="group_name" placeholder='{{media_group}}'/>
-      <button type="button"><img src="{% static 'Icons/save.png'%}"</button>
-      <!-- <input id="group_name" type="text" class="form-control" name="searchgroup" placeholder="Enter Group Name"/> -->
+      <form action="" method="post">
+          {% csrf_token %}
+          {% for field in form %}
+            {% if field.label is "group_name" %}
+              <input for="{{form.group_name}}"id="group_name" placeholder={{media_group}}/>
+            {% elif field.label is "query"%}
+              {{field}}
+            {% endif %}
+            {{field}}
+          {% endfor %}
+          <button type="submit" value="Submit"><img src="{% static 'Icons/save.png'%}"></button>
+      </form>
     </div>
     <ul>
       {% for member in group_members %}
@@ -60,16 +70,22 @@
         </li>
       </a>
       {% endfor %}
-      <a>
-        <li class="member">
-          <div class="attribute_block">
-            <img class="attr_img" src="{% static 'Icons/createNew.png' %}">
-            <div class="attr_name">
-              <h4>Click to add to Group</h4>
+      {% if no_group_selected %}
+        <center>
+          <h1>Select group to edit!</h1>
+        </center>
+      {% else %}
+        <a>
+          <li class="member">
+            <div class="attribute_block">
+              <img class="attr_img" src="{% static 'Icons/createNew.png' %}">
+              <div class="attr_name">
+                <h4>Click to add to Members</h4>
+              </div>
             </div>
-          </div>
-        </li>
-      </a>
+          </li>
+        </a>
+      {% endif %}
     </ul>
   </div>
 </div>

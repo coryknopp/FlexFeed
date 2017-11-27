@@ -74,6 +74,7 @@ class Media_Group(models.Model):
     Model representing a group
     """
     members = models.ManyToManyField(Member, help_text="Select a member")
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     subscribers = models.IntegerField()
     views = models.IntegerField()
     popularity = models.IntegerField()
@@ -81,11 +82,14 @@ class Media_Group(models.Model):
     category = models.ManyToManyField(Category, help_text="Select a category")
     picture = models.URLField(max_length=20000, default='')
 
+
     def __str__(self):
         """r
         String for representing the group object
         """
         return self.name
+
+
 
 
 class Profile(models.Model):

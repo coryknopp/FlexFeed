@@ -8,7 +8,6 @@
     <h1>Checkout the discovery page to see what's hot!</h1>
   </center>
   {% else %}
-    <h1>Page is loading</h1>
 
     <!-- <div id="stockmenu" class="stockmenu" style="text-align:center">
       {% for member in unique_Members %} {% if member.stock %}
@@ -103,7 +102,7 @@
       <h1>Groups:</h1>
       <ul>
         {% for group in all_Groups %}
-        <li margin-left:0px; "">
+        <li>
           <a class="group_button" href=" {% url 'view_group' group.id %} ">
               <img src={{group.picture}}>
               <h4 style="display:inline-block;">{{group.name}}</h4>
