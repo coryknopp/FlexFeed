@@ -28,7 +28,7 @@ def index(request):
 
 
 def groups(request):
-    all_groups = None
+    all_user_groups = None
     if request.user.is_authenticated():
         all_user_groups = request.user.profile.media_group.all()
     return render(
@@ -38,35 +38,26 @@ def groups(request):
     )
 
 
-def edit(request):
+def edit(request,pk=None):
 
-    all_user_groups = None
-    user = None
-
+    user=None
+    user, all_user_groups,media_group,group_members = [None]*4
     if request.user.is_authenticated():
         user = request.user
         all_user_groups = request.user.profile.media_group.all()
-
-    all_members = Member.objects.all()
-
-    return render(
-        request,
-        'edit.html',
-        context={'all_user_groups': all_user_groups, 'all_members': all_members,'user':user}
-    )
-
-
-def edit_group(request, pk):
 
     if pk is None:
-        return edit(request)
+        return render(
+            request,
+            'edit_group.html',
+            context={'all_user_groups': all_user_groups,'user':user}
+        )
 
-    print('test ', pk)
     if request.user.is_authenticated():
-        user = request.user
-        all_user_groups = request.user.profile.media_group.all()
         media_group = get_object_or_404(Media_Group, pk=pk)
         group_members = media_group.members.all()
+
+    all_members = Member.objects.all()
 
     return render(
         request,
@@ -74,6 +65,7 @@ def edit_group(request, pk):
         context={'all_user_groups': all_user_groups, 'media_group': media_group, 'user': user,
                  'group_members': group_members}
     )
+
 
 
 def discover(request):

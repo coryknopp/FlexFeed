@@ -7,8 +7,7 @@ urlpatterns = [
     url(r'^groups/$', views.groups, name='groups'),
     url(r'^login/$', views.login, name='login'),
     url(r'^discovery/$', views.discover, name='discover'),
-    url(r'^settings/$', views.settings, name='settings'),
-    url(r'^groups/edit/$', views.edit, name='edit')
+    url(r'^settings/$', views.settings, name='settings')
 ]
 
 urlpatterns += [
@@ -17,6 +16,5 @@ urlpatterns += [
 
 # url mapping for editing specific groups
 urlpatterns += [
-    url(r'^groups/edit_group(?:/(?P<pk>[-\w]+))?/$', views.edit_group, name='edit_group'),
-
+    url(r'^groups/edit_group(?:/(?P<pk>[-\w]+))?/$', views.edit, name='edit_group'),
 ]
