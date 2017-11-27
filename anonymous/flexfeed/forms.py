@@ -1,8 +1,9 @@
 from django import forms
 
+
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
-from .models import Profile
+from .models import Profile, Member
 
 class EditProfileForm(forms.Form):
     new_UserName = forms.CharField(required=False);
@@ -23,10 +24,16 @@ class EditProfileForm(forms.Form):
             raise forms.ValidationError("You must confirm your password")
         if password1 != password2:
             raise forms.ValidationError("Your passwords do not match")
-        
+
 
     def clean_username(self):
         username = self.cleaned_data['new_UserName']
         if User.objects.exclude(pk=self.instance.pk).filter(username=username).exists():
             raise forms.ValidationError(u'Username "%s" is already in use.' % username)
         return username
+
+
+# class AddMemberForm(forms.Form):
+#     member_name = forms.CharField(label='Your name', max_length=100)
+#
+#     ModelForm

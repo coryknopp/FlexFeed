@@ -11,20 +11,30 @@ def index(request,pk=None):
     if request.user.is_authenticated():
         user = request.user
         all_groups = request.user.profile.media_group.all()
+
         if pk is None:
-            curr_group = all_groups[1]
+            print("PK is NONE")
+            curr_group = all_groups[0]
             print(curr_group.__dict__)
             unique_Members = curr_group.members.all()
         else:
+            print("PK is selected")
             curr_group = get_object_or_404(Media_Group, pk=pk)
-            print("This is the current group")
             print(curr_group)
             unique_Members = curr_group.members.all()
+
+    if(all_groups==None):
+        emptyPage=True
+        print(emptyPage)
+        return render(
+            request,
+            'home.html',
+            context={'all_Stocks': all_Stocks,'emptyPage':1, 'user': user, 'all_Groups': [], 'all_Posts':[], 'unique_Members': []},
+        )
 
     Posts = []
     print("These are the current group's members")
     for member in unique_Members:
-        print(member)
         Posts.append(member.post.all())
 
     return render(
@@ -44,6 +54,10 @@ def groups(request):
         'groups.html',
         context={'all_user_groups': all_user_groups}
     )
+
+def add_new_member(request):
+    all_members = Member.objects.all()
+    return None
 
 
 def edit(request,pk=None):
