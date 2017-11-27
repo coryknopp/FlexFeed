@@ -164,6 +164,7 @@ def edit_members(request,pk):
         group_instance.popularity = 1;
         group_instance.save()
         group_instance.members = form.cleaned_data['members']
+        group_instance.picture = form.cleaned_data['picture']
         group_instance.save()
         user.profile.media_group.add(group_instance)
         return HttpResponseRedirect(reverse('edit_group') )

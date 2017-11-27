@@ -46,12 +46,13 @@
       <form action="" method="post">
           {% csrf_token %}
           {% for field in form %}
-            {% if field.label is "group_name" %}
-              <input for="{{form.group_name}}" placeholder="{{media_group}}"/>
-            {% elif field.label is "query"%}
+            {% if field.label == "group_name" %}
+              <input value="{{group_instance.name}}" placeholder="Enter group name" for={{form.group_name}}>
+            {% elif field.label == "picture"%}
+              <input value={{group_instance.picture}} placeholder="Enter img URL(http)" for={{form.picture}}>
+            {% elif field.label == "query"%}
               {{field}}
             {% endif %}
-            {{field}}
           {% endfor %}
           <button type="submit" value="Submit"><img src="{% static 'Icons/save.png'%}"></button>
       </form>
