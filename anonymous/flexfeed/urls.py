@@ -23,3 +23,7 @@ urlpatterns += [
 urlpatterns += [
     url(r'^groups/edit_group(?:/(?P<pk>[-\w]+))?/$', views.edit_members, name='edit_group'),
 ]
+
+urlpatterns += [
+    url(r'^groups/delete/(?:/(?P<pk>[-\w]+))?/$', views.delete, name='delete'),
+]

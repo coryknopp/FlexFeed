@@ -16,8 +16,8 @@
               <img class="attr_img" src={{group.picture}}>
               <div class="attr_name">
                 <h4>{{group.name}}</h4>
-                <img src="{% static 'Icons/delete.png' %}">
               </div>
+              <a class="del" href=" {% url 'delete' group.id %} "><img src="{% static 'Icons/delete.png' %}"></a>
             </div>
           </a>
         </li>
