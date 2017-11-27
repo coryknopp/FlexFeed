@@ -18,3 +18,7 @@ urlpatterns += [
 urlpatterns += [
     url(r'^groups/edit_group(?:/(?P<pk>[-\w]+))?/$', views.edit, name='edit_group'),
 ]
+# url mapping for viewing specific groups in home page
+urlpatterns += [
+    url(r'^(?:/(?P<pk>[-\w]+))?/$', views.index, name='view_group'),
+]

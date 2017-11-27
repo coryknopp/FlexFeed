@@ -2,27 +2,35 @@ from django.shortcuts import render
 from .models import Stock, User, Media_Group, Post, Member
 
 
-def index(request):
-
+def index(request,pk=None):
     all_Stocks=Stock.objects.all()
-    all_groups=Media_Group.objects.all()
+    all_groups=None
+    curr_group = None
     unique_Members = None
     user = None
     if request.user.is_authenticated():
         user = request.user
         all_groups = request.user.profile.media_group.all()
-        unique_Members = Member.objects.filter(media_group__in=all_groups).distinct()
+        if pk is None:
+            curr_group = all_groups[1]
+            print(curr_group.__dict__)
+            unique_Members = curr_group.members.all()
+        else:
+            curr_group = get_object_or_404(Media_Group, pk=pk)
+            print("This is the current group")
+            print(curr_group)
+            unique_Members = curr_group.members.all()
 
+    Posts = []
+    print("These are the current group's members")
+    for member in unique_Members:
+        print(member)
+        Posts.append(member.post.all())
 
-    IG_Posts =Post.objects.filter(site__contains='IG')
-    TWT_Posts=Post.objects.filter(site__contains='TWT')
-    FB_Posts = Post.objects.filter(site__contains='FB')
-    all_Posts=Post.objects.all()
     return render(
         request,
         'home.html',
-        context={'all_Stocks': all_Stocks, 'user': user, 'all_Groups': all_groups, 'all_Posts':all_Posts,
-                'IG_Posts': IG_Posts, 'TWT_Posts': TWT_Posts, 'FB_Posts': FB_Posts, 'unique_Members': unique_Members},
+        context={'all_Stocks': all_Stocks, 'user': user, 'all_Groups': all_groups, 'all_Posts':Posts, 'unique_Members': unique_Members},
     )
 
 

@@ -97,7 +97,7 @@
     <ul>
       {% for group in all_Groups %}
       <li margin-left:0px;"">
-        <a class="group_button" href="#">
+        <a class="group_button" href=" {% url 'view_group' group.id %} ">
           <img src={{group.picture}}>
           <h4 style="display:inline-block;">{{group.name}}</h4>
         </a>
