@@ -15,37 +15,43 @@
     <div class='grid'>
 
 
-{% for group in all_groups %}
+{% for group in top_5_Groups %}
+
+
 
     {% if forloop.counter is 1 %}
-    <div class='cell cell_blue'>
+    <div class='cell cell_blue' style="height:35vh">
 
     {% elif forloop.counter is 2 %}
-    <div class='cell cell_red'>
+    <div class='cell cell_red' style="height:35vh">
 
     {% elif forloop.counter is 3 %}
-    <div class='cell cell_purple'>
+    <div class='cell cell_purple' style="height:35vh">
 
     {% elif forloop.counter is 4 %}
-    <div class='cell cell_orange'>
+    <div class='cell cell_orange' style="height:35vh">
 
     {% elif forloop.counter is 5 %}
-    <div class='cell cell_green'>
+    <div class='cell cell_green' style="height:35vh">
 
     {% endif %}
 
-    <div class='cell_title' style="padding-bottom: 2vh; font-weight: bold">
+    <div class='cell_title' style="padding-bottom: 2vh; margin-top:2vh; font-weight: bold">
         {{group.name}}
+        <div style="font-size:14px;">
+          {{group.members.all.0}}
+          <br>
+          {{group.members.all.1}}
+          <br>
+          {{group.members.all.2}}
+          <br>
+          {% if group.members.all.3 %} ... {% endif %}
+          <br>
+        </div>
     </div>
 
     <div class='subscribe glyphicon glyphicon-plus-sign'>
-        <div style="font-size: 14px; text-align: center">
-
-            {% for member in group.members.all %}
-            {{member.name}}
-            <br>
-            {% endfor %}
-
+        <div style="font-size: 14px; text-align: center; margin-top:2vh;">
         </div>
     </div>
 
@@ -68,37 +74,41 @@
     <div class='grid'>
 
 
-{% for group in all_groups %}
+{% for group in random_5_Groups %}
 
     {% if forloop.counter is 1 %}
-    <div class='cell cell_blue'>
+    <div class='cell cell_blue' style="height:35vh">
 
     {% elif forloop.counter is 2 %}
-    <div class='cell cell_red'>
+    <div class='cell cell_red' style="height:35vh">
 
     {% elif forloop.counter is 3 %}
-    <div class='cell cell_purple'>
+    <div class='cell cell_purple' style="height:35vh">
 
     {% elif forloop.counter is 4 %}
-    <div class='cell cell_orange'>
+    <div class='cell cell_orange' style="height:35vh">
 
     {% elif forloop.counter is 5 %}
-    <div class='cell cell_green'>
+    <div class='cell cell_green' style="height:35vh">
 
     {% endif %}
 
-    <div class='cell_title' style="padding-bottom: 2vh; font-weight: bold">
+    <div class='cell_title' style="padding-bottom: 2vh; margin-top:2vh; font-weight: bold">
         {{group.name}}
+        <div style="font-size:14px">
+          {{group.members.all.0}}
+          <br>
+          {{group.members.all.1}}
+          <br>
+          {{group.members.all.2}}
+          <br>
+          {% if group.members.all.3 %} ... {% endif %}
+          <br>
+        </div>
     </div>
 
     <div class='subscribe glyphicon glyphicon-plus-sign'>
-        <div style="font-size: 14px; text-align: center">
-
-            {% for member in group.members.all %}
-            {{member.name}}
-            <br>
-            {% endfor %}
-
+        <div style="font-size: 14px; text-align: center; margin-top:2vh;">
         </div>
     </div>
 
