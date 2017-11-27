@@ -17,8 +17,6 @@
 
 {% for group in top_5_Groups %}
 
-
-
     {% if forloop.counter is 1 %}
     <div class='cell cell_blue' style="height:35vh">
 
@@ -50,6 +48,7 @@
         </div>
     </div>
 
+        <a href=" {% url 'add' group.id %} " >
     <div class='subscribe glyphicon glyphicon-plus-sign'>
         <div style="font-size: 14px; text-align: center; margin-top:2vh;">
         </div>
@@ -58,6 +57,7 @@
     <div class='cell_footer'>
         Subscribers: {{group.subscribers}}
     </div>
+        </a>
 
 </div>
 {% endfor %}

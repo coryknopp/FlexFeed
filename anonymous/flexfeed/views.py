@@ -201,7 +201,15 @@ def edit_members(request,pk):
             context={'form': form, 'group_instance':group_instance,'all_user_groups': all_user_groups, 'user': user,
                      'group_members': group_members,'no_group_selected':False})
 
-def delete(request,pk):
-    group_instance=get_object_or_404(Media_Group, pk = pk)
+
+def delete(request, pk):
+    group_instance = get_object_or_404(Media_Group, pk=pk)
     group_instance.delete()
-    return HttpResponseRedirect(reverse('edit_group') )
+    return HttpResponseRedirect(reverse('edit_group'))
+
+
+def add(request, pk):
+    group_instance = get_object_or_404(Media_Group, pk=pk)
+    request.user.profile.media_group.add(group_instance)
+    return HttpResponseRedirect(reverse('discover'))
+
