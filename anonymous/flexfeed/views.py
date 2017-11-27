@@ -60,16 +60,30 @@ def add_new_member(request):
     all_members = Member.objects.all()
     return None
 
+from random import shuffle
+
 def discover(request):
 
-    all_groups = Media_Group.objects.all()
-    all_members = Member.objects.all()
 
+    all_User_Groups = request.user.profile.media_group.all()
+    all_groups = Media_Group.objects.all()
+
+    random5 = []
+    top5 = []
+
+    for group in all_groups:
+        if group not in all_User_Groups:
+            random5.append(group)
+            top5.append(group)
+
+    top_5_Groups = all_groups.exclude(id__in=all_User_Groups).order_by('-popularity')[:5]
+    random_5_Groups = all_groups.exclude(id__in=all_User_Groups).exclude(id__in=top_5_Groups).order_by('-popularity')[:5]
 
     return render(
         request,
         'discovery.html',
-        context={'all_groups': all_groups, 'all_members': all_members}
+        context={'all_groups': all_groups, 'top_5_Groups': top_5_Groups,
+        'random_5_Groups': random_5_Groups}
     )
 
 def settings(request):
