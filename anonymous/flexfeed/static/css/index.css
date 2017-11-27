@@ -57,8 +57,10 @@ row {
 
 /*EVERYTHING RELATED TO THE GROUP NAVIGATION SIDE PANEL*/
 .group_list{
+  border-top: 2px solid black;
+  border-right: 2px solid black;
   width:22%;
-  margin-top: 10px;
+  margin-top: 6vh;
   position:fixed;
   left:0px;
   background-color: white;
@@ -149,7 +151,7 @@ row {
 }
 
 #first {
-    margin-top: 8vh;
+    margin-top: 6vh;
 }
 
 .post, .group-body {
@@ -159,8 +161,9 @@ row {
 }
 
 .group-body {
-    height: 300px;
-    width: 300px;
+    font-size: 20px;
+    height: 7vh;
+    width:30vh;
     border-radius: 5%;
     position: fixed;
     margin-left: 25px;
@@ -194,14 +197,16 @@ row {
 .stockmenu {
     position: fixed;
     padding-bottom: 0px;
+    height:55px;
 }
 
 #stockmenu {
-  background-color: gray;
+  background-color: #414d60;
   padding-bottom: 0px;
   padding-bottom: 0px;
   margin-bottom: 0px;
   margin-top: 0px;
+  border-bottom: 2px solid black
 }
 
 div.stockmenu {
