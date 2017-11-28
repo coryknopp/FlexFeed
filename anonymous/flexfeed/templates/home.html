@@ -10,7 +10,7 @@
   {% else %}
 
 
-
+  {% if all_Stocks %}
   <div id="stockmenu" class="stockmenu" style="text-align:center">
     {% for member in unique_Members %}
     {% if member.stock %}
@@ -21,6 +21,8 @@
     {% endif %}
     {% endfor %}
   </div>
+  {% else %}
+  {% endif %}
 
 
 
@@ -74,6 +76,7 @@
   {% endif %}
 
 
+  {% if all_Stocks and not emptyPage %}
   <div class='col-md-3 group' style="margin-top:6vh;">
     <div class='group-body' style="border:2px solid black">
       <div class="checkbox">
@@ -82,7 +85,6 @@
       </div>
     </div>
   </div>
-
 
   <script>
     var stockCopy= $('#stockmenu');
@@ -105,7 +107,17 @@
        });
   </script>
 
-
+  {% elif not emptyPage %}
+  <div class='col-md-3 group' style="margin-top:6vh;">
+    <div class='group-body' style="border:2px solid black; height: 10vh; width: 20vh; font-size:2vh; padding-left:2vh">
+      <strong> No stocks available in this group. </strong>
+    </div>
+  </div>
+  <script>
+    $('.group_list').css('margin-top', 0);
+    $('#first').css('margin-top', 0);
+  </script>
+  {% endif %}
 
 
 

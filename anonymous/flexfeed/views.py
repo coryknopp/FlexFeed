@@ -24,6 +24,9 @@ def index(request,pk=None):
             print(curr_group)
             unique_Members = curr_group.members.all()
 
+    if unique_Members:
+        all_Stocks = unique_Members.exclude(stock__isnull=True)
+
     if(all_groups==None):
         emptyPage=True
         print(emptyPage)
@@ -212,4 +215,3 @@ def add(request, pk):
     group_instance = get_object_or_404(Media_Group, pk=pk)
     request.user.profile.media_group.add(group_instance)
     return HttpResponseRedirect(reverse('discover'))
-
