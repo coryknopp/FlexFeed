@@ -19,11 +19,9 @@ urlpatterns += [
     url(r'^(?:(?P<pk>[-\w]+))?/$', views.index, name='view_group'),
 ]
 
-# url mapping for editing specific groups
+# url mapping for editing, deleting, and adding specific groups
 urlpatterns += [
     url(r'^groups/edit_group(?:/(?P<pk>[-\w]+))?/$', views.edit_members, name='edit_group'),
-]
-
-urlpatterns += [
     url(r'^groups/delete/(?:/(?P<pk>[-\w]+))?/$', views.delete, name='delete'),
+    url(r'^groups/add/(?:/(?P<pk>[-\w]+))?/$', views.add, name='add'),
 ]
