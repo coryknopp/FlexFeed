@@ -206,12 +206,14 @@ def edit_members(request,pk):
 
 
 def delete(request, pk):
-    group_instance = get_object_or_404(Media_Group, pk=pk)
-    group_instance.delete()
+    if request.user.is_authenticated():
+        group_instance = get_object_or_404(Media_Group, pk=pk)
+        request.user.profile.media_group.remove(group_instance)
     return HttpResponseRedirect(reverse('edit_group'))
 
 
 def add(request, pk):
-    group_instance = get_object_or_404(Media_Group, pk=pk)
-    request.user.profile.media_group.add(group_instance)
+    if request.user.is_authenticated():
+        group_instance = get_object_or_404(Media_Group, pk=pk)
+        request.user.profile.media_group.add(group_instance)
     return HttpResponseRedirect(reverse('discover'))
