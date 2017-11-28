@@ -9,7 +9,7 @@
 <div class="col-sm">
   <div class='grid'>
     {% for group in all_user_groups %}
-      <div class='cell'>
+      <a href=" {% url 'view_group' group.id %} " class='cell'>
         <div class="cell-content">
           <img class="attr_img" src="{{group.picture}}">
           <div class ='attr_name' >
@@ -24,7 +24,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </a>
     {% endfor %}
     <a href='edit_group' class='cell'>
         <div class='edit_text'>
