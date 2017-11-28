@@ -51,12 +51,12 @@
         </div>
     </div>
 
-        <a href=" {% url 'add' group.id %} ">
-    <div class='subscribe glyphicon glyphicon-plus-sign'>
+    <a href=" {% url 'add' group.id %} ">
+      <div class='subscribe glyphicon glyphicon-plus-sign'>
         <div style="font-size: 14px; text-align: center; margin-top:2vh;">
         </div>
-    </div>
-        </a>
+      </div>
+    </a>
     <div class='cell_footer'>
         Subscribers: {{group.subscribers}}
     </div>
@@ -112,10 +112,12 @@
         </div>
     </div>
 
-    <div class='subscribe glyphicon glyphicon-plus-sign'>
+    <a href=" {% url 'add' group.id %} ">
+      <div class='subscribe glyphicon glyphicon-plus-sign'>
         <div style="font-size: 14px; text-align: center; margin-top:2vh;">
         </div>
-    </div>
+      </div>
+    </a>
 
     <div class='cell_footer'>
         Subscribers: {{group.subscribers}}
