@@ -1,32 +1,44 @@
 {% extends "flexfeed_template.html" %} {% load static %} {% block extra_css %}
 {% block groups_active %}class='active'{% endblock %}
+{% block title %}Explore Groups{% endblock %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/groups.css' %}"> {% endblock %} {% block content %}
 <header class="text-center">
-  <h1 class='title'>Checkout Your Groups</h1>
+  <h1 class='title'>Explore Your Groups</h1>
   <h5>These are the groups you can select to see on your feed. You can explore the groups from this window.</h5>
 </header>
 
-<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm">
   <div class='grid'>
     {% for group in all_user_groups %}
-      <div class='cell'>
-        <div class='name'>
-          {{ group.name }}
+      <a href=" {% url 'view_group' group.id %} " class='cell'>
+        <div class="cell-content">
+          <img class="attr_img" src="{{group.picture}}">
+          <div class ='attr_name' >
+            <div class='name'>
+              {{ group.name }}
+            </div>
+            <div class='subscribers'>
+              Subscribers<br>{{ group.subscribers }}
+            </div>
+            <div class='views'>
+              Views<br>{{ group.views }}
+            </div>
+          </div>
         </div>
-        <div class='subscribers'>
-          Subscribers<br>{{ group.subscribers }}
-        </div>
-        <div class='views'>
-          Views<br>{{ group.views }}
-        </div>
-      </div>
-    {% endfor %}
-    <div class='cell'>
-
-      <a href='edit_group'>
-        <div class='new glyphicon glyphicon-plus'></div>
       </a>
-    </div>
+    {% endfor %}
+    <a href='edit_group' class='cell'>
+        <div class='edit_text'>
+          <h1>
+            <center>
+              Manage Groups
+            </center>
+          </h1>
+        </div>
+        <div class='attr_name'>
+          <span class="icon-pos glyphicon glyphicon-share-alt">
+        </div>
+    </a>
   </div>
 </div>
 {% endblock %}
