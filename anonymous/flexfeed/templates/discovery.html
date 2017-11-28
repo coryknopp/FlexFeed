@@ -1,7 +1,7 @@
 {% extends "flexfeed_template.html" %}
 {% block discovery_active %}class='active'{% endblock %}
 {% load static %}
-{% block title %}Discovery Page{% endblock %}
+
 {% block extra_css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/discovery.css' %}">
 {% endblock %}
@@ -50,11 +50,12 @@
         </div>
     </div>
 
+        <a href=" {% url 'add' group.id %} ">
     <div class='subscribe glyphicon glyphicon-plus-sign'>
         <div style="font-size: 14px; text-align: center; margin-top:2vh;">
         </div>
     </div>
-
+        </a>
     <div class='cell_footer'>
         Subscribers: {{group.subscribers}}
     </div>
@@ -65,6 +66,7 @@
 </div>
 
 
+{% if random_5_Groups %}
 
 <div class="col-sm-10 col-sm-offset-1">
     <h1 class="main-title"> Groups You Might Like </h1>
@@ -72,6 +74,8 @@
 
 <div class="col-sm-10 col-sm-offset-1">
     <div class='grid'>
+
+{% endif %}
 
 
 {% for group in random_5_Groups %}
