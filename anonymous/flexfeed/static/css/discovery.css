@@ -1,22 +1,19 @@
 body {
     background-color: #E6ECF0;
-    height: auto; /*if more info comes on the page, it will stretch down*/
-    width: 1000em;
-    margin: 0 auto; /*this will cause the div to be in the center*/
 }
 
 h5 {
-    margin-bottom: 50em;
+    margin-bottom: 50px;
 }
 
 h3 {
-    margin-top: 5em;
-    margin-bottom: 5em;
+    margin-top: 5px;
+    margin-bottom: 5px;
     display: block;
 }
 
 .main-title {
-    font-size: 24em;
+    font-size: 24px;
     line-height: 2;
     letter-spacing: .1vh;
     text-align: center;
@@ -40,9 +37,9 @@ h3 {
     overflow: hidden;
     position: relative;
     
-    margin-left: 5em;
-    margin-right: 5em;
-    margin-bottom: 10em;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
     
     flex-basis: 18%;
 }
