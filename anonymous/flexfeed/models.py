@@ -30,9 +30,9 @@ class Stock(models.Model):
     Model representing a book genre (e.g. Science Fiction, Non Fiction).
     """
     company = models.CharField(max_length=50, help_text="The company that has this stock value.")
-    value = models.DecimalField(help_text="The value of the stock.",max_digits=5,decimal_places=2)
-    trend = models.IntegerField(help_text="0 if trending down, 1 if trending up.")
-
+    # value = models.DecimalField(help_text="The value of the stock.",max_digits=5,decimal_places=2)
+    # trend = models.IntegerField(help_text="0 if trending down, 1 if trending up.")
+    market = models.CharField(max_length=50, help_text="The market containing this company.", default = '')
     def __str__(self):
         """
         String for representing the Model object (in Admin site etc.)
