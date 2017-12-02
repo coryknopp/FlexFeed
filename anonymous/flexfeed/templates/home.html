@@ -9,204 +9,127 @@
   </center>
   {% else %}
 
-
-<!--   {% if all_Stocks %}
-  <div id="stockmenu" class="stockmenu" style="text-align:center">
-    {% for member in unique_Members %}
-    {% if member.stock %}
-      <div> {{ member.stock.company }} <br> {{ member.stock.value }}
-      {% if member.stock.trend %} <img src="{% static 'Icons/green.png' %}"></div>
-      {% else %} <img src="{% static 'Icons/red.png' %}"></div>
-      {% endif %}
-    {% endif %}
-    {% endfor %}
+<div class="stocks">
+  <div class="stockMenu">
+  {% if all_Stocks %}
+    <script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
+    "symbols": [
+      {% for member in unique_Members %}
+        {% if member.stock.symbol and member.stock.market %}
+          {% if forloop.counter != all_Stocks|length %}
+              {
+                "proName": "{{member.stock.symbol}}",
+                "title": "{{member.stock.market}}"
+              },
+          {% else %}
+            {
+              "proName": "{{member.stock.symbol}}",
+              "title": "{{member.stock.market}}"
+            }
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    ],
+    "locale": "en"
+    }</script>
+  {% endif %}
   </div>
-  {% else %}
-  {% endif %} -->
+</div>
 
-  <!-- TradingView Widget BEGIN -->
-{% if all_Stocks %}
-  <div id="stockmenu">
-    {% for member in unique_Members %}
-      {% if member.stock %}
-        <div>
-          <span id="tradingview-copyright"><a ref="nofollow noopener" target="_blank" href="http://www.tradingview.com" style="color: rgb(173, 174, 176); font-family: &quot;Trebuchet MS&quot;, Tahoma, Arial, sans-serif; font-size: 13px;">Quotes by <span style="color: #3BB3E4">TradingView</span></a></span>
-          <script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
-          "symbols": [
-          {
-            "description": {{member.stock.company}},
-            "proName": {{member.stock.market}}":"{{member.stock.symbol}}
-          },
-          {
-            "description": "Twitter",
-            "proName": "NYSE:TWTR"
-          },
-          {
-            "description": "Under Armour",
-            "proName": "NYSE:UA"
-          },
-          {
-            "description": "GE",
-            "proName": "NYSE:GE"
-          },
-          {
-            "description": "Tesla",
-            "proName": "NASDAQ:TSLA"
-          },
-          {
-            "description": "Target",
-            "proName": "NYSE:TGT"
-          },
-          {
-            "description": "Netflix",
-            "proName": "NASDAQ:NFLX"
-          },
-          {
-            "description": "Amazon",
-            "proName": "NASDAQ:AMZN"
-          },
-          {
-            "description": "Adidas",
-            "proName": "OTC:ADDDF"
-          },
-          {
-            "description": "HP",
-            "proName": "NYSE:HPQ"
-          }
-          ],
-          "locale": "en"
-        }</script>
+<div class='col-md-3 group'></div>
+
+<div class='group_list'>
+  <h1>Groups:</h1>
+  <ul>
+    {% for group in all_Groups %}
+    <li>
+      <a class="group_button" href=" {% url 'view_group' group.id %} ">
+          <img src={{group.picture}}>
+          <h4 style="display:inline-block;">{{group.name}}</h4>
+        </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<row>
+  <div class='col-md-6 post-column' id="first">
+    {% for member in unique_Members %} {% for post in member.post.all %} {% if post.site == 'IG' %}
+    <div class='post instagram'>
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+        <div style="padding:8px;">
+          <p>
+            <a href={{post.link}} style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank"></a>
+          </p>
+        </div>
+      </blockquote>
+      <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
+    </div>
+    {% elif post.site == 'TWT' %}
+    <div class='post twitter'>
+      <div class='twitter-frame'>
+        <blockquote class="twitter-tweet" data-lang="en" align="center">
+          <a href={{post.link}}></a>
+        </blockquote>
       </div>
-      {% else %}
-  <!-- TradingView Widget END -->
-      {% endif %}
-    {% endfor %}
+    </div>
+    <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    {% elif post.site == 'FB' %}
+    <div class='post facebook' style="text-align: center; width: 100%;">
+      <iframe src={{post.link}} width="618" height="664" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="false"></iframe>
+    </div>
+    {% endif %} {% endfor %} {% endfor %}
   </div>
-{% else %}
+</row>
+
+
 {% endif %}
 
-<!-- TradingView Widget BEGIN -->
-<!-- <span id="tradingview-copyright"><a ref="nofollow noopener" target="_blank" href="http://www.tradingview.com" style="color: rgb(173, 174, 176); font-family: &quot;Trebuchet MS&quot;, Tahoma, Arial, sans-serif; font-size: 13px;">Quotes by <span style="color: #3BB3E4">TradingView</span></a></span>
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
-  "symbols": [
-    {
-      "proName": "INDEX:SPX",
-      "title": "S&P 500"
-    },
-    {
-      "proName": "INDEX:IUXX",
-      "title": "Nasdaq 100"
-    },
-    {
-      "proName": "FX_IDC:EURUSD",
-      "title": "EUR/USD"
-    },
-    {
-      "proName": "NYMEX:CL1!",
-      "title": "Crude Oil"
-    },
-    {
-      "proName": "FX_IDC:XAUUSD",
-      "title": "Gold"
-    }
-  ],
-  "locale": "en"
-}</script> -->
-<!-- TradingView Widget END -->
 
-
-    <div class='col-md-3 group'></div>
-
-    <div class='group_list'>
-      <h1>Groups:</h1>
-      <ul>
-        {% for group in all_Groups %}
-        <li>
-          <a class="group_button" href=" {% url 'view_group' group.id %} ">
-              <img src={{group.picture}}>
-              <h4 style="display:inline-block;">{{group.name}}</h4>
-            </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-
-    <row>
-      <div class='col-md-6 post-column' id="first">
-        {% for member in unique_Members %} {% for post in member.post.all %} {% if post.site == 'IG' %}
-        <div class='post instagram'>
-          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-            <div style="padding:8px;">
-              <p>
-                <a href={{post.link}} style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank"></a>
-              </p>
-            </div>
-          </blockquote>
-          <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
-        </div>
-        {% elif post.site == 'TWT' %}
-        <div class='post twitter'>
-          <div class='twitter-frame'>
-            <blockquote class="twitter-tweet" data-lang="en" align="center">
-              <a href={{post.link}}></a>
-            </blockquote>
-          </div>
-        </div>
-        <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        {% elif post.site == 'FB' %}
-        <div class='post facebook' style="text-align: center; width: 100%;">
-          <iframe src={{post.link}} width="618" height="664" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="false"></iframe>
-        </div>
-        {% endif %} {% endfor %} {% endfor %}
-      </div>
-    </row>
-
-
-  {% endif %}
-
-
-  {% if all_Stocks and not emptyPage %}
-  <div class='col-md-3 group' style="margin-top:6vh;">
-    <div class='group-body' style="border:2px solid black">
-      <div class="checkbox">
-        <strong> Show Stocks </strong>
-        <input type="checkbox" name="checkbox" id="checkbox" checked="checked" style="margin-left:2vh" />
-      </div>
-    </div>
+{% if all_Stocks and not emptyPage %}
+<div class='col-md-3 group' style="margin-top:6vh;">
+<div class='group-body' style="border:2px solid black">
+  <div class="checkbox">
+    <strong> Show Stocks </strong>
+    <input type="checkbox" name="checkbox" id="checkbox" checked="checked" style="margin-left:2vh" />
   </div>
+</div>
+</div>
 
-  <script>
-    var stockCopy= $('#stockmenu');
-    var groupListMargin = $('.group_list').css('margin-top');
-    var feedMargin = $('#first').css('margin-top');
+<script>
+var stockCopy= $('.stockMenu');
+var groupListMargin = $('.group_list').css('margin-top');
+var feedMargin = $('#first').css('margin-top');
 
-       $("#checkbox").on('click', function(){
-         if($('#checkbox').is(":checked")) {
-           $('body').append(stockCopy);
-           $("#checkbox").prop(":checked", true );
-           $('.group_list').css('margin-top', groupListMargin);
-           $('#first').css('margin-top', feedMargin);
-         }
-         else {
-           $("#stockmenu").remove();
-           $("#checkbox").prop(':checked', false );
-           $('.group_list').css('margin-top', 0);
-           $('#first').css('margin-top', 0);
-         }
-       });
-  </script>
+   $("#checkbox").on('click', function(){
+     if($('#checkbox').is(":checked")) {
+       $('.stocks').append(stockCopy);
+       $("#checkbox").prop(":checked", true );
+       $('.group_list').css('margin-top', groupListMargin);
+       $('#first').css('margin-top', feedMargin);
+     }
+     else {
+       $(".stockMenu").remove();
+       $("#checkbox").prop(':checked', false );
+       $('.group_list').css('margin-top', 0);
+       $('#first').css('margin-top', 0);
+     }
+   });
 
-  {% elif not emptyPage %}
-  <div class='col-md-3 group' style="margin-top:6vh;">
-    <div class='group-body' style="border:2px solid black; height: 10vh; width: 20vh; font-size:2vh; padding-left:2vh">
-      <strong> No stocks available in this group. </strong>
-    </div>
+
+</script>
+
+{% elif not emptyPage %}
+<div class='col-md-3 group' style="margin-top:6vh;">
+  <div class='group-body' style="border:2px solid black; height: 10vh; width: 20vh; font-size:2vh; padding-left:2vh">
+    <strong> No stocks available in this group. </strong>
   </div>
-  <script>
-    $('.group_list').css('margin-top', 0);
-    $('#first').css('margin-top', 0);
-  </script>
-  {% endif %}
+</div>
+<script>
+  $('.group_list').css('margin-top', 0);
+  $('#first').css('margin-top', 0);
+</script>
+{% endif %}
 
 
 

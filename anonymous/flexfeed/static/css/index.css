@@ -59,8 +59,9 @@ row {
 .group_list{
   border-top: 2px solid black;
   border-right: 2px solid black;
+  border-bottom: 2px solid black;
   width:22%;
-  margin-top: 6vh;
+  margin-top: -4vh;
   position:fixed;
   left:0px;
   background-color: white;
@@ -151,7 +152,7 @@ row {
 }
 
 #first {
-    margin-top: 6vh;
+    margin-top: -4vh;
 }
 
 .post, .group-body {
@@ -192,54 +193,4 @@ row {
 
 .dummy {
     margin-top: 5%;
-}
-
-.stockmenu {
-    position: fixed;
-    padding-bottom: 0px;
-    height:55px;
-}
-
-#stockmenu {
-  background-color: #414d60;
-  padding-bottom: 0px;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  border-bottom: 2px solid black
-}
-
-div.stockmenu {
-    padding-bottom: 0px;
-    overflow: auto;
-    white-space: nowrap;
-    margin-bottom: 2vh auto;
-    z-index: 1;
-    width: 100%;
-}
-
-div.stockmenu div {
-    display: inline-block;
-    text-align: center;
-    padding: 5px;
-    border: 2px solid black;
-    margin: 0px;
-    width: 13vh;
-    letter-spacing: 2px;
-    font-size: 15px;
-    font-weight: bold;
-    overflow: hidden;
-}
-
-div.stockmenu img {
-    height: 8px;
-    width: 8px;
-}
-
-.stockmenu div:nth-child(n) {
-    background: #d6cdcb;
-}
-
-.stockmenu div:nth-child(2n) {
-    background: white;
 }
