@@ -15,7 +15,7 @@
 <div class="col-sm-10 col-sm-offset-1">
   <div class='grid'>
 
-    {% for group in top_5_Groups %}
+    {% for group in top_4_Groups %}
       <a href="{% url 'add' group.id %}" class='cell'>
         <div class="cell-content">
           <img class="attr_img" src="{{group.picture}}">
@@ -44,7 +44,7 @@
 <div class="col-sm-10 col-sm-offset-1">
   <div class='grid'>
 
-    {% for group in random_5_Groups %}
+    {% for group in random_4_Groups %}
     <a href="{% url 'add' group.id %}" class='cell'>
       <div class="cell-content">
         <img class="attr_img" src="{{group.picture}}">
