@@ -13,6 +13,90 @@
 </div>
 
 <div class="col-sm-10 col-sm-offset-1">
+  <div class='grid'>
+
+    {% for group in top_5_Groups %}
+      <a href="{% url 'view_group' group.id %}" class='cell'>
+        <div class="cell-content">
+          <img class="attr_img" src="{{group.picture}}">
+          <div class='attr_name'>
+            <div class='name'>
+              {{ group.name }}
+            </div>
+            <div class='subscribers'>
+              Subscribers<br>{{ group.subscribers }}
+            </div>
+            <div class='views'>
+              Views<br>{{ group.views }}
+            </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+
+  </div>
+</div>
+
+<div class="col-sm-10 col-sm-offset-1">
+    <h1 class="main-title"> Most Subscribers </h1>
+</div>
+
+
+<div class="col-sm-10 col-sm-offset-1">
+  <div class='grid'>
+
+    {% for group in most_subscribed_5_Groups %}
+    <a href="{% url 'view_group' group.id %}" class='cell'>
+      <div class="cell-content">
+        <img class="attr_img" src="{{group.picture}}">
+        <div class='attr_name'>
+          <div class="name">
+            {{ group.name }}
+          </div>
+          <div class='subscribers'>
+            Subscribers<br>{{ group.subscribers }}
+          </div>
+          <div class='views'>
+            Views<br>{{ group.views }}
+          </div>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+
+  </div>
+</div>
+
+<div class="col-sm-10 col-sm-offset-1">
+    <h1 class="main-title"> Groups You Might Like </h1>
+</div>
+
+<div class="col-sm-10 col-sm-offset-1">
+  <div class='grid'>
+
+    {% for group in random_5_Groups %}
+    <a href="{% url 'view_group' group.id %}" class='cell'>
+      <div class="cell-content">
+        <img class="attr_img" src="{{group.picture}}">
+        <div class='attr_name'>
+          <div class="name">
+            {{ group.name }}
+          </div>
+          <div class='subscribers'>
+            Subscribers<br>{{ group.subscribers }}
+          </div>
+          <div class='views'>
+            Views<br>{{ group.views }}
+          </div>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+
+  </div>
+</div>
+
+<!-- <div class="col-sm-10 col-sm-offset-1">
     <div class='grid'>
 
 
@@ -130,3 +214,4 @@
 
 
 {% endblock %}
+ -->
