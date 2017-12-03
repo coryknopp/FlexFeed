@@ -46,7 +46,7 @@
   <div class='grid'>
 
     {% for group in most_subscribed_5_Groups %}
-    <a href="{% url 'view_group' group.id %}" class='cell'>
+    <a href="{% url 'add' group.id %}" class='cell'>
       <div class="cell-content">
         <img class="attr_img" src="{{group.picture}}">
         <div class='attr_name'>
@@ -75,7 +75,7 @@
   <div class='grid'>
 
     {% for group in random_5_Groups %}
-    <a href="{% url 'view_group' group.id %}" class='cell'>
+    <a href="{% url 'add' group.id %}" class='cell'>
       <div class="cell-content">
         <img class="attr_img" src="{{group.picture}}">
         <div class='attr_name'>
