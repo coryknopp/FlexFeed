@@ -73,14 +73,17 @@ def discover(request):
 
     random5 = []
     top5 = []
+    subscribe5 = []
 
     for group in all_groups:
         if group not in all_User_Groups:
             random5.append(group)
             top5.append(group)
+            subscribe5.append(group)
 
     top_5_Groups = all_groups.exclude(id__in=all_User_Groups).order_by('-popularity')[:5]
     random_5_Groups = all_groups.exclude(id__in=all_User_Groups).exclude(id__in=top_5_Groups).order_by('-popularity')[:5]
+    most_subscribed_5_Groups = all_groups.exclude(id__in=all_User_Groups).order_by('-subscribers')[:5]
 
     return render(
         request,
