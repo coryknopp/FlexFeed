@@ -3,7 +3,7 @@
 {% block content %}
 
 {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
+<p style="text-align:center; font-weight:bold">Your username and password didn't match. Please try again.</p>
 {% endif %}
 
 {% if next %}
@@ -20,9 +20,9 @@
 
 <div class="container-fluid">
   <div class="col-sm-4"> </div>
-  <div class="col-sm-4" style="text-align: center;"">
+  <div class="col-sm-4" style="text-align: center;">
   <div class="wrapper">
-    <form class="form-signin">       
+    <form class="form-signin">
       <h2 class="form-signin-heading">Log in:</h2>
 
       <div>
@@ -33,12 +33,12 @@
       <div>
         <td>{{ form.password.label_tag }}</td>
         <td>{{ form.password }}</td>
-      </div>  
-      
+      </div>
+
       <button class="btn btn-lg btn-primary btn-block" type="submit" value="{{next}}"
         style="margin-top: 1vh">
         Login
-      </button>   
+      </button>
     </form>
   </div>
 </div>
