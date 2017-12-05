@@ -10,114 +10,149 @@
   {% else %}
 
 
+<div class="stocks" style="position: fixed; width: 100%; height: 12vh; z-index: 1; background:#E6ECF0">
+  <div class="stockMenu">
   {% if all_Stocks %}
-  <div id="stockmenu" class="stockmenu" style="text-align:center">
-    {% for member in unique_Members %}
-    {% if member.stock %}
-      <div> {{ member.stock.company }} <br> {{ member.stock.value }}
-      {% if member.stock.trend %} <img src="{% static 'Icons/green.png' %}"></div>
-      {% else %} <img src="{% static 'Icons/red.png' %}"></div>
-      {% endif %}
-    {% endif %}
+    <script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
+    "symbols": [
+      {% for member in unique_Members %}
+        {% if member.stock.symbol and member.stock.market %}
+          {% if forloop.counter != all_Stocks|length %}
+              {
+                "proName": "{{member.stock.symbol}}",
+                "title": "{{member.stock.market}}"
+              },
+          {% else %}
+            {
+              "proName": "{{member.stock.symbol}}",
+              "title": "{{member.stock.market}}"
+            }
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    ],
+    "locale": "en"
+    }</script>
+  {% endif %}
+  </div>
+</div>
+
+<div class='col-md-3 group'></div>
+
+<div class='group_list'>
+  <h1>Groups:</h1>
+  <ul>
+    {% for group in all_Groups %}
+    <li>
+      <a class="group_button" href=" {% url 'view_group' group.id %} ">
+          <img src={{group.picture}}>
+          <h4 style="display:inline-block;">{{group.name}}</h4>
+        </a>
+    </li>
     {% endfor %}
-  </div>
-  {% else %}
-  {% endif %}
+  </ul>
+</div>
 
-
-
-    <div class='col-md-3 group'></div>
-
-    <div class='group_list'>
-      <h1>Groups:</h1>
-      <ul>
-        {% for group in all_Groups %}
-        <li>
-          <a class="group_button" href=" {% url 'view_group' group.id %} ">
-              <img src={{group.picture}}>
-              <h4 style="display:inline-block;">{{group.name}}</h4>
-            </a>
-        </li>
-        {% endfor %}
-      </ul>
+<row>
+  <div class='col-md-6 post-column' id="first">
+    {% for member in unique_Members %} {% for post in member.post.all %} {% if post.site == 'IG' %}
+    <div class='post instagram'>
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+        <div style="padding:8px;">
+          <p>
+            <a href={{post.link}} style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank"></a>
+          </p>
+        </div>
+      </blockquote>
+      <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
     </div>
-
-    <row>
-      <div class='col-md-6 post-column' id="first">
-        {% for member in unique_Members %} {% for post in member.post.all %} {% if post.site == 'IG' %}
-        <div class='post instagram'>
-          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-            <div style="padding:8px;">
-              <p>
-                <a href={{post.link}} style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank"></a>
-              </p>
-            </div>
-          </blockquote>
-          <script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
-        </div>
-        {% elif post.site == 'TWT' %}
-        <div class='post twitter'>
-          <div class='twitter-frame'>
-            <blockquote class="twitter-tweet" data-lang="en" align="center">
-              <a href={{post.link}}></a>
-            </blockquote>
-          </div>
-        </div>
-        <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        {% elif post.site == 'FB' %}
-        <div class='post facebook' style="text-align: center; width: 100%;">
-          <iframe src={{post.link}} width="618" height="664" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="false"></iframe>
-        </div>
-        {% endif %} {% endfor %} {% endfor %}
-      </div>
-    </row>
-
-
-  {% endif %}
-
-
-  {% if all_Stocks and not emptyPage %}
-  <div class='col-md-3 group' style="margin-top:6vh;">
-    <div class='group-body' style="border:2px solid black">
-      <div class="checkbox">
-        <strong> Show Stocks </strong>
-        <input type="checkbox" name="checkbox" id="checkbox" checked="checked" style="margin-left:2vh" />
+    {% elif post.site == 'TWT' %}
+    <div class='post twitter'>
+      <div class='twitter-frame'>
+        <blockquote class="twitter-tweet" data-lang="en" align="center">
+          <a href={{post.link}}></a>
+        </blockquote>
       </div>
     </div>
-  </div>
-
-  <script>
-    var stockCopy= $('#stockmenu');
-    var groupListMargin = $('.group_list').css('margin-top');
-    var feedMargin = $('#first').css('margin-top');
-
-       $("#checkbox").on('click', function(){
-         if($('#checkbox').is(":checked")) {
-           $('body').append(stockCopy);
-           $("#checkbox").prop(":checked", true );
-           $('.group_list').css('margin-top', groupListMargin);
-           $('#first').css('margin-top', feedMargin);
-         }
-         else {
-           $("#stockmenu").remove();
-           $("#checkbox").prop(':checked', false );
-           $('.group_list').css('margin-top', 0);
-           $('#first').css('margin-top', 0);
-         }
-       });
-  </script>
-
-  {% elif not emptyPage %}
-  <div class='col-md-3 group' style="margin-top:6vh;">
-    <div class='group-body' style="border:2px solid black; height: 10vh; width: 20vh; font-size:2vh; padding-left:2vh">
-      <strong> No stocks available in this group. </strong>
+    <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    {% elif post.site == 'FB' %}
+    <div class='post facebook' style="align: center; margin-left:12%; width: 75%; ">
+      <div style="z-value: 1; text-align: center">
+      <script src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"
+        async></script>
+        <div class="fb-post" style="background-color:white"
+        data-href="https://www.facebook.com/tesla/videos/10155881505942801/"
+        data-width="500"></div>
+      </div>
     </div>
+    {% endif %} {% endfor %} {% endfor %}
   </div>
-  <script>
+</row>
+
+
+{% endif %}
+
+
+{% if all_Stocks and not emptyPage %}
+<div class='col-md-3 group' style="margin-top:10vh; margin-left:85vh">
+<div class='group-body' style="border:2px solid black">
+  <div class="checkbox">
+    <strong> Show Stocks </strong>
+    <input type="checkbox" name="checkbox" id="checkbox" checked="checked" style="margin-left:2vh" />
+  </div>
+</div>
+</div>
+
+<script>
+var stockCopy= $('.stockMenu');
+var groupListMargin = $('.group_list').css('margin-top');
+var feedMargin = $('#first').css('margin-top');
+
+function showStocks(){
+  if($('#checkbox').is(":checked")) {
+    $('.stocks').append(stockCopy);
+    $("#checkbox").prop(":checked", true );
+    $('.group_list').css('margin-top', groupListMargin);
+    $('.group_list').height('85%');
+    $('#first').css('margin-top', feedMargin);
+    $('#first').css('z-index', 0);
+  }
+  else {
+    $(".stockMenu").remove();
+    $("#checkbox").prop(':checked', false );
     $('.group_list').css('margin-top', 0);
+    $('.group_list').height('92%');
     $('#first').css('margin-top', 0);
-  </script>
-  {% endif %}
+    $('#first').css('z-index', 2);
+  }
+};
+
+$("#checkbox").on('click', showStocks);
+$(document).ready(showStocks);
+
+//on page load set the checkbox to stored value or default to true
+$('#checkbox').prop('checked' , ( typeof sessionStorage.turbo !== 'undefined' ) ? (sessionStorage.turbo=='true') : true );
+//when checkbox is updated, update stored value
+$('#checkbox').change( function() { sessionStorage.turbo = $(this).prop('checked');  });
+
+
+</script>
+
+{% elif not emptyPage %}
+<div class='col-md-3 group' style="margin-top:10vh; margin-left:85vh;">
+  <div class='group-body' style="border:2px solid black; width: 35vh; height: 9vh; padding-left:2vh">
+    <strong> No stocks available in this group. </strong>
+  </div>
+</div>
+<script>
+  $(".stockMenu").remove();
+  $("#checkbox").prop(':checked', false );
+  $('.group_list').css('margin-top', 0);
+  $('.group_list').height('92%');
+  $('#first').css('margin-top', 0);
+  $('#first').css('z-index', 2);
+</script>
+{% endif %}
 
 
 

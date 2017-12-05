@@ -6,14 +6,14 @@ body {
 }
 
 row {
-    margin-top: 0;
+    margin-top: 10vh;
     margin-right: 0;
 }
 
 #navbar {
     border-radius: 0;
     border: 1px solid gray;
-    margin: 0px auto;
+    margin: 100px auto;
     font-size: 2vh;
     background-color: gray;
     box-shadow: 0 2px 1px -1px gray;
@@ -59,13 +59,15 @@ row {
 .group_list{
   border-top: 2px solid black;
   border-right: 2px solid black;
+  border-bottom: 2px solid black;
   width:22%;
-  margin-top: 6vh;
+  margin-top: 8.75vh;
   position:fixed;
   left:0px;
   background-color: white;
-  height: 90%;
+  height: 85%;
   overflow: scroll;
+  z-index: 2;
 }
 .group_list ul
 {
@@ -151,7 +153,10 @@ row {
 }
 
 #first {
-    margin-top: 6vh;
+    z-index: 0;
+    margin-top: 12vh;
+    margin-left: 25%;
+    position:absolute;
 }
 
 .post, .group-body {
@@ -184,6 +189,8 @@ row {
 
 .facebook {
     background-color: rgba(59, 89, 152, 1);
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .twitter-frame {
@@ -192,54 +199,4 @@ row {
 
 .dummy {
     margin-top: 5%;
-}
-
-.stockmenu {
-    position: fixed;
-    padding-bottom: 0px;
-    height:55px;
-}
-
-#stockmenu {
-  background-color: #414d60;
-  padding-bottom: 0px;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  border-bottom: 2px solid black
-}
-
-div.stockmenu {
-    padding-bottom: 0px;
-    overflow: auto;
-    white-space: nowrap;
-    margin-bottom: 2vh auto;
-    z-index: 1;
-    width: 100%;
-}
-
-div.stockmenu div {
-    display: inline-block;
-    text-align: center;
-    padding: 5px;
-    border: 2px solid black;
-    margin: 0px;
-    width: 13vh;
-    letter-spacing: 2px;
-    font-size: 15px;
-    font-weight: bold;
-    overflow: hidden;
-}
-
-div.stockmenu img {
-    height: 8px;
-    width: 8px;
-}
-
-.stockmenu div:nth-child(n) {
-    background: #d6cdcb;
-}
-
-.stockmenu div:nth-child(2n) {
-    background: white;
 }

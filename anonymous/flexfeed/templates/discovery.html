@@ -13,120 +13,57 @@
 </div>
 
 <div class="col-sm-10 col-sm-offset-1">
-    <div class='grid'>
+  <div class='grid'>
 
-
-{% for group in top_5_Groups %}
-
-
-
-    {% if forloop.counter is 1 %}
-    <div class='cell cell_blue' style="height:35vh">
-
-    {% elif forloop.counter is 2 %}
-    <div class='cell cell_red' style="height:35vh">
-
-    {% elif forloop.counter is 3 %}
-    <div class='cell cell_purple' style="height:35vh">
-
-    {% elif forloop.counter is 4 %}
-    <div class='cell cell_orange' style="height:35vh">
-
-    {% elif forloop.counter is 5 %}
-    <div class='cell cell_green' style="height:35vh">
-
-    {% endif %}
-
-    <div class='cell_title' style="padding-bottom: 2vh; margin-top:2vh; font-weight: bold">
-        {{group.name}}
-        <div style="font-size:14px;">
-          {{group.members.all.0}}
-          <br>
-          {{group.members.all.1}}
-          <br>
-          {{group.members.all.2}}
-          <br>
-          {% if group.members.all.3 %} ... {% endif %}
-          <br>
+    {% for group in top_4_Groups %}
+      <a href="{% url 'add' group.id %}" class='cell'>
+        <div class="cell-content">
+          <img class="attr_img" src="{{group.picture}}">
+          <div class='attr_name'>
+            <div class='name'>
+              {{ group.name }}
+            </div>
+            <div class='subscribers'>
+              Subscribers<br>{{ group.subscribers }}
+            </div>
+            <div class='views'>
+              Views<br>{{ group.views }}
+            </div>
+          </div>
         </div>
-    </div>
+      </a>
+    {% endfor %}
 
-    <a href=" {% url 'add' group.id %} ">
-      <div class='subscribe glyphicon glyphicon-plus-sign'>
-        <div style="font-size: 14px; text-align: center; margin-top:2vh;">
-        </div>
-      </div>
-    </a>
-    <div class='cell_footer'>
-        Subscribers: {{group.subscribers}}
-    </div>
-
+  </div>
 </div>
-{% endfor %}
-</div>
-</div>
-
-
-{% if random_5_Groups %}
 
 <div class="col-sm-10 col-sm-offset-1">
     <h1 class="main-title"> Groups You Might Like </h1>
 </div>
 
 <div class="col-sm-10 col-sm-offset-1">
-    <div class='grid'>
+  <div class='grid'>
 
-{% endif %}
-
-
-{% for group in random_5_Groups %}
-
-    {% if forloop.counter is 1 %}
-    <div class='cell cell_blue' style="height:35vh">
-
-    {% elif forloop.counter is 2 %}
-    <div class='cell cell_red' style="height:35vh">
-
-    {% elif forloop.counter is 3 %}
-    <div class='cell cell_purple' style="height:35vh">
-
-    {% elif forloop.counter is 4 %}
-    <div class='cell cell_orange' style="height:35vh">
-
-    {% elif forloop.counter is 5 %}
-    <div class='cell cell_green' style="height:35vh">
-
-    {% endif %}
-
-    <div class='cell_title' style="padding-bottom: 2vh; margin-top:2vh; font-weight: bold">
-        {{group.name}}
-        <div style="font-size:14px">
-          {{group.members.all.0}}
-          <br>
-          {{group.members.all.1}}
-          <br>
-          {{group.members.all.2}}
-          <br>
-          {% if group.members.all.3 %} ... {% endif %}
-          <br>
-        </div>
-    </div>
-
-    <a href=" {% url 'add' group.id %} ">
-      <div class='subscribe glyphicon glyphicon-plus-sign'>
-        <div style="font-size: 14px; text-align: center; margin-top:2vh;">
+    {% for group in random_4_Groups %}
+    <a href="{% url 'add' group.id %}" class='cell'>
+      <div class="cell-content">
+        <img class="attr_img" src="{{group.picture}}">
+        <div class='attr_name'>
+          <div class="name">
+            {{ group.name }}
+          </div>
+          <div class='subscribers'>
+            Subscribers<br>{{ group.subscribers }}
+          </div>
+          <div class='views'>
+            Views<br>{{ group.views }}
+          </div>
         </div>
       </div>
     </a>
+    {% endfor %}
 
-    <div class='cell_footer'>
-        Subscribers: {{group.subscribers}}
-    </div>
-
+  </div>
 </div>
-{% endfor %}
-</div>
-</div>
-
 
 {% endblock %}

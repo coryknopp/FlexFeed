@@ -71,22 +71,25 @@ def discover(request):
     all_User_Groups = request.user.profile.media_group.all()
     all_groups = Media_Group.objects.all()
 
-    random5 = []
-    top5 = []
+    random4 = []
+    top4 = []
+    subscribe4 = []
 
     for group in all_groups:
         if group not in all_User_Groups:
-            random5.append(group)
-            top5.append(group)
+            random4.append(group)
+            top4.append(group)
+            subscribe4.append(group)
 
-    top_5_Groups = all_groups.exclude(id__in=all_User_Groups).order_by('-popularity')[:5]
-    random_5_Groups = all_groups.exclude(id__in=all_User_Groups).exclude(id__in=top_5_Groups).order_by('-popularity')[:5]
+    top_4_Groups = all_groups.exclude(id__in=all_User_Groups).order_by('-popularity')[:4]
+    random_4_Groups = all_groups.exclude(id__in=all_User_Groups).exclude(id__in=top_4_Groups).order_by('-popularity')[:4]
+    most_subscribed_4_Groups = all_groups.exclude(id__in=all_User_Groups).order_by('-subscribers')[:4]
 
     return render(
         request,
         'discovery.html',
-        context={'all_groups': all_groups, 'top_5_Groups': top_5_Groups,
-        'random_5_Groups': random_5_Groups}
+        context={'all_groups': all_groups, 'top_4_Groups': top_4_Groups,
+        'random_4_Groups': random_4_Groups}
     )
 
 def settings(request):
