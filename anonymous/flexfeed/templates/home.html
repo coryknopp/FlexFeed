@@ -76,12 +76,12 @@
     </div>
     <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
     {% elif post.site == 'FB' %}
-    <div class='post facebook' style="text-align: center; width: 100%;">
-      <div style="z-value: 1; opacity:50">
+    <div class='post facebook' style="align: center; margin-left:12%; width: 75%; ">
+      <div style="z-value: 1; text-align: center">
       <script src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"
         async></script>
         <div class="fb-post" style="background-color:white"
-        data-href="{{post.link}}"
+        data-href="https://www.facebook.com/tesla/videos/10155881505942801/"
         data-width="500"></div>
       </div>
     </div>
@@ -108,24 +108,32 @@ var stockCopy= $('.stockMenu');
 var groupListMargin = $('.group_list').css('margin-top');
 var feedMargin = $('#first').css('margin-top');
 
-   $("#checkbox").on('click', function(){
-     if($('#checkbox').is(":checked")) {
-       $('.stocks').append(stockCopy);
-       $("#checkbox").prop(":checked", true );
-       $('.group_list').css('margin-top', groupListMargin);
-       $('.group_list').height('85%');
-       $('#first').css('margin-top', feedMargin);
-       $('#first').css('z-index', 0);
-     }
-     else {
-       $(".stockMenu").remove();
-       $("#checkbox").prop(':checked', false );
-       $('.group_list').css('margin-top', 0);
-       $('.group_list').height('92%');
-       $('#first').css('margin-top', 0);
-       $('#first').css('z-index', 2);
-     }
-   });
+function showStocks(){
+  if($('#checkbox').is(":checked")) {
+    $('.stocks').append(stockCopy);
+    $("#checkbox").prop(":checked", true );
+    $('.group_list').css('margin-top', groupListMargin);
+    $('.group_list').height('85%');
+    $('#first').css('margin-top', feedMargin);
+    $('#first').css('z-index', 0);
+  }
+  else {
+    $(".stockMenu").remove();
+    $("#checkbox").prop(':checked', false );
+    $('.group_list').css('margin-top', 0);
+    $('.group_list').height('92%');
+    $('#first').css('margin-top', 0);
+    $('#first').css('z-index', 2);
+  }
+};
+
+$("#checkbox").on('click', showStocks);
+$(document).ready(showStocks);
+
+//on page load set the checkbox to stored value or default to true
+$('#checkbox').prop('checked' , ( typeof sessionStorage.turbo !== 'undefined' ) ? (sessionStorage.turbo=='true') : true );
+//when checkbox is updated, update stored value
+$('#checkbox').change( function() { sessionStorage.turbo = $(this).prop('checked');  });
 
 
 </script>
