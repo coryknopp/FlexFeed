@@ -200,6 +200,7 @@ def edit_members(request,pk):
     else:
         #If we're going to actually edit the page lets load up some more neccessary pre-existing data
         if request.user.is_authenticated():
+            group_instance = group_instance
             group_members = group_instance.members.all()
         return render(
             request,
@@ -213,6 +214,13 @@ def delete(request, pk):
         group_instance = get_object_or_404(Media_Group, pk=pk)
         request.user.profile.media_group.remove(group_instance)
     return HttpResponseRedirect(reverse('edit_group'))
+
+def delete_member(request, pk_group,pk_member):
+    if request.user.is_authenticated():
+        group_instance = get_object_or_404(Media_Group, pk=pk_group)
+        member_instance = get_object_or_404(Member, pk=pk_member)
+        group_instance.members.remove(member_instance)
+    return HttpResponseRedirect(reverse('edit_group', args=(pk_group,)))
 
 
 def add(request, pk):

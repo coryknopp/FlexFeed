@@ -68,6 +68,7 @@
             <div class="attr_name">
               <h4>{{member.name}}</h4>
             </div>
+            <a class="del" href=" {% url 'delete-member' group_instance.id member.id %} "><img src="{% static 'Icons/delete.png' %}"></a>
           </div>
         </li>
       </a>

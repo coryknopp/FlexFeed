@@ -23,5 +23,6 @@ urlpatterns += [
 urlpatterns += [
     url(r'^groups/edit_group(?:/(?P<pk>[-\w]+))?/$', views.edit_members, name='edit_group'),
     url(r'^groups/delete/(?:/(?P<pk>[-\w]+))?/$', views.delete, name='delete'),
+    url(r'^groups/delete-member/(?:/(?P<pk_group>[-\w]+))?/(?:/(?P<pk_member>[-\w]+))?/$', views.delete_member, name='delete-member'),
     url(r'^groups/add/(?:/(?P<pk>[-\w]+))?/$', views.add, name='add'),
 ]
