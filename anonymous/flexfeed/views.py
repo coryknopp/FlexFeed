@@ -226,9 +226,10 @@ def delete_member(request, pk_group,pk_member):
     return HttpResponseRedirect(reverse('edit_group', args=(pk_group,)))
 
 def add_member(request, pk_group,member_name):
+    print(member_name)
     if request.user.is_authenticated():
         group_instance = get_object_or_404(Media_Group, pk=pk_group)
-        member_instance = Member.objects.get(name=member_name)
+        member_instance = Member.objects.get(name__iexact=member_name)
         group_instance.members.add(member_instance)
     return HttpResponseRedirect(reverse('edit_group', args=(pk_group,)))
 
