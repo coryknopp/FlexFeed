@@ -15,27 +15,18 @@
   font-family: sans-serif;
 }
 .edit_toolbar button {
-  right: 3%;
   position: absolute;
   background-color: transparent;
   outline: none;
   border: none;
   border-radius: 20px;
-  height:60%;
+  height:100%;
 }
-.edit_toolbar img {
+.edit_toolbar span {
   background-color: transparent;
   border-radius: 10px;
   height: 100%;
   object-fit: contain;
-}
-
-.edit_toolbar img:hover {
-  background-color: rgba(0, 0, 0, 1);
-  opacity: .6;
-  -webkit-transition: opacity 0.6s;
-  -moz-transition: opacity 0.6s;
-  transition: opacity 0.6s;
 }
 
 

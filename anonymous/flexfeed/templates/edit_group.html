@@ -1,6 +1,26 @@
-{% extends "flexfeed_template.html" %} {% load static%} {% block groups_active %}class='active'{% endblock %} {% block extra_css %}
-{% block title %}Edit Groups{% endblock %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/editgroups.css' %}"> {% endblock %} {% block content %}
+{% extends "flexfeed_template.html" %} {% load static%} {% block groups_active %}class='active'{% endblock %}
+{% block extra_css %}
+
+  <script>
+    $(function () {
+      dataSrc={{all_members|safe}}
+      $("#myText").autocomplete({
+          source:dataSrc
+      });
+    });
+  </script>
+  <script>
+    function add_member(id){
+      var input=document.getElementById("myText").value
+      url = "{% url 'add-member' 0 'zzzz' %}"
+      url = url.replace('0', id.toString()).replace('zzzz',input);
+      location.href=url
+    }
+  </script>
+  {% block title %}Edit Groups{% endblock %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/editgroups.css' %}"> {% endblock %}
+{% block content %}
 
 
 <center>
@@ -44,52 +64,49 @@
 
 
   <div id="members">
-    <div class="edit_toolbar">
-      <form action="" method="post">
-          {% csrf_token %}
-          {% for field in form %}
-            {% if field.label == "group_name" %}
-              <input value="{{group_instance.name}}" placeholder="Enter group name" for={{field}}
-            {% elif field.label == "picture"%}
-              <input value="{{group_instance.picture}}" placeholder="Enter img URL (http)" for={{field}}
-            {% elif field.label == "query"%}
-              {{field}}
-            {% endif %}
-          {% endfor %}
-          <button type="submit" value="Submit"><img src="{% static 'Icons/save.png'%}"></button>
-      </form>
-    </div>
-    <ul>
-      {% for member in group_members %}
-      <a>
-        <li class="member">
-          <div class="attribute_block">
-            <img class="attr_img" src={{member.profile_picture}}>
-            <div class="attr_name">
-              <h4>{{member.name}}</h4>
-            </div>
-            <a class="del" href=" {% url 'delete-member' group_instance.id member.id %} "><img src="{% static 'Icons/delete.png' %}"></a>
-          </div>
-        </li>
-      </a>
-      {% endfor %}
       {% if no_group_selected %}
         <center>
           <h1>Select group to edit!</h1>
         </center>
       {% else %}
-        <!-- <a>
+      <div class="edit_toolbar">
+
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <input style="margin-right:40px;" value="{{group_instance.name}}" placeholder="Enter group name" type="text" name="group_name" maxlength="50" required="" id="id_group_name">
+            <input value="{{group_instance.picture}}" placeholder="Enter img URL (http)" type="url" name="picture" maxlength="10000" required="" id="id_picture">
+            <button type="submit" style="font-size:250%;" value="Submit"><span class="glyphicon glyphicon-arrow-right"></span></button>
+        </form>
+
+
+        {% if is_existing_group %}
+          <div style="padding-top:20px;" class="ui-widget">
+
+            <label>Search Members</label>
+
+            <input id="myText"  value="">
+            <button type="submit" style="font-size:250%;" class="submit" value="Submit" onclick="add_member({{group_instance.id}})"><span class="glyphicon glyphicon-arrow-right"></span></button>
+
+          </div>
+        {% endif %}
+
+
+      </div>
+      {% for member in group_members %}
+        <a>
           <li class="member">
             <div class="attribute_block">
-              <img class="attr_img" src="{% static 'Icons/createNew.png' %}">
+              <img class="attr_img" src={{member.profile_picture}}>
               <div class="attr_name">
-                <h4>Click to add to Members</h4>
+                <h4>{{member.name}}</h4>
               </div>
+              <a class="del" href=" {% url 'delete-member' group_instance.id member.id %} "><img src="{% static 'Icons/delete.png' %}"></a>
             </div>
           </li>
-        </a> -->
+        </a>
+      {% endfor %}
       {% endif %}
-    </ul>
   </div>
 </div>
 {% endblock %}

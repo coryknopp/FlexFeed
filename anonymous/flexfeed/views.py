@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Stock, User, Media_Group, Post, Member
-from .forms import GroupForm
+from .forms import GroupForm, AddMemberForm
+import json
 
 
 def index(request,pk=None):
@@ -14,14 +15,10 @@ def index(request,pk=None):
         all_groups = request.user.profile.media_group.all()
 
         if pk is None:
-            print("PK is NONE")
             curr_group = all_groups[0]
-            print(curr_group.__dict__)
             unique_Members = curr_group.members.all()
         else:
-            print("PK is selected")
             curr_group = get_object_or_404(Media_Group, pk=pk)
-            print(curr_group)
             unique_Members = curr_group.members.all()
 
     if unique_Members:
@@ -29,7 +26,6 @@ def index(request,pk=None):
 
     if(all_groups==None):
         emptyPage=True
-        print(emptyPage)
         return render(
             request,
             'home.html',
@@ -37,7 +33,6 @@ def index(request,pk=None):
         )
 
     Posts = []
-    print("These are the current group's members")
     for member in unique_Members:
         Posts.append(member.post.all())
 
@@ -153,6 +148,7 @@ def edit_Profile(request):
     return render(request, 'editprofile.html', {'form': form, 'user': user})
 
 def edit_members(request,pk):
+    all_members = Member.objects.all()
     user, all_user_groups,media_group,group_members = [None]*4
     if request.user.is_authenticated():
         user = request.user
@@ -160,7 +156,6 @@ def edit_members(request,pk):
 
     # If no URL argument is passed in lets just render the regular page
     if pk is None:
-        print("none")
         return render(
             request,
             'edit_group.html',
@@ -182,20 +177,28 @@ def edit_members(request,pk):
         group_instance.subscribers = 1;
         group_instance.views = 1;
         group_instance.popularity = 1;
-        group_instance.save()
-        group_instance.members = form.cleaned_data['members']
         group_instance.picture = form.cleaned_data['picture']
         group_instance.save()
         user.profile.media_group.add(group_instance)
-        return HttpResponseRedirect(reverse('edit_group') )
+        new_pk = group_instance.id
+        return HttpResponseRedirect(reverse('edit_group', args=[new_pk]))
 
     #if pk =="-1" then lets create a new Media_Group and create a title and members
+    data = []
+    for member in all_members:
+        temp_member={}
+        temp_member['id']=member.id
+        temp_member['value']=member.name
+        temp_member['label']=member.name
+        data.append(temp_member)
+    data = json.dumps(data)
+
     if (pk == "-1"):
         return render(
             request,
             'edit_group.html',
             context={'form': form, 'group_instance':group_instance,'all_user_groups': all_user_groups, 'user': user,
-                     'group_members': group_members,'no_group_selected':False})
+                     'group_members': group_members,'no_group_selected':False,'is_existing_group':False, 'all_members':data})
 
     else:
         #If we're going to actually edit the page lets load up some more neccessary pre-existing data
@@ -206,7 +209,7 @@ def edit_members(request,pk):
             request,
             'edit_group.html',
             context={'form': form, 'group_instance':group_instance,'all_user_groups': all_user_groups, 'user': user,
-                     'group_members': group_members,'no_group_selected':False})
+                     'group_members': group_members,'no_group_selected':False,'is_existing_group':True,'all_members':data})
 
 
 def delete(request, pk):
@@ -221,6 +224,30 @@ def delete_member(request, pk_group,pk_member):
         member_instance = get_object_or_404(Member, pk=pk_member)
         group_instance.members.remove(member_instance)
     return HttpResponseRedirect(reverse('edit_group', args=(pk_group,)))
+
+def add_member(request, pk_group,member_name):
+    if request.user.is_authenticated():
+        group_instance = get_object_or_404(Media_Group, pk=pk_group)
+        member_instance = Member.objects.get(name=member_name)
+        group_instance.members.add(member_instance)
+    return HttpResponseRedirect(reverse('edit_group', args=(pk_group,)))
+
+def getResults(request):
+    if request.is_ajax():
+        query = request.GET.get('term', '')
+        members = Member.objects.filter(member__icontains = query )[:5]
+        results = []
+        for member in members:
+            member_instance = {}
+            member_instance['name'] = member.name
+            member_instance['id'] = member.id
+            member_instance['picture'] = member.profile_picture
+            results.append(member_instance)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
 
 
 def add(request, pk):

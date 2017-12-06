@@ -74,7 +74,7 @@ class Media_Group(models.Model):
     """
     Model representing a group
     """
-    members = models.ManyToManyField(Member, help_text="Select a member")
+    members = models.ManyToManyField(Member, help_text="Select a member",null=True)
     subscribers = models.IntegerField()
     views = models.IntegerField()
     popularity = models.IntegerField()

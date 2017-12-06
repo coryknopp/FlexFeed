@@ -37,8 +37,11 @@ class EditProfileForm(forms.Form):
 class GroupForm(forms.Form):
     group_name = forms.CharField(label='group_name',max_length=50)
     picture = forms.URLField(label='picture',max_length=10000)
-    members = forms.ModelMultipleChoiceField(label='query', queryset=Member.objects.all())
+    # members = forms.ModelMultipleChoiceField(label='query', queryset=Member.objects.all())
 
     class Meta:
-        model = Member
+        # model = Member
         fields = ['name','picture']
+
+class AddMemberForm(forms.Form):
+    member = forms.CharField(label='group_name',max_length=50)

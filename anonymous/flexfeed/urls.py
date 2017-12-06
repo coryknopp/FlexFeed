@@ -23,6 +23,8 @@ urlpatterns += [
 urlpatterns += [
     url(r'^groups/edit_group(?:/(?P<pk>[-\w]+))?/$', views.edit_members, name='edit_group'),
     url(r'^groups/delete/(?:/(?P<pk>[-\w]+))?/$', views.delete, name='delete'),
+    url(r'^groups/add/(?:/(?P<pk>[-\w ]+))?/$', views.add, name='add'),
     url(r'^groups/delete-member/(?:/(?P<pk_group>[-\w]+))?/(?:/(?P<pk_member>[-\w]+))?/$', views.delete_member, name='delete-member'),
-    url(r'^groups/add/(?:/(?P<pk>[-\w]+))?/$', views.add, name='add'),
+    url(r'^groups/add-member/(?:/(?P<pk_group>[-\w]+))?/(?:/(?P<member_name>[-\w\s\-]+))?/$', views.add_member, name='add-member'),
+    url(r'^queryData', views.getResults , name='queryData'),
 ]
