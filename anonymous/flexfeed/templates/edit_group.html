@@ -24,6 +24,21 @@
       }
     }
   </script>
+  <script>
+    function add_member(id){
+      var input=document.getElementById("myText").value
+      if(input == ""){
+        url = "{% url 'edit_group' 0 %}"
+        url = url.replace('0', id.toString())
+        location.href=url
+      }
+      else{
+        url = "{% url 'add-member' 0 'zzzz' %}"
+        url = url.replace('0', id.toString()).replace('zzzz',input);
+        location.href=url
+      }
+    }
+  </script>
   {% block title %}Edit Groups{% endblock %}
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/editgroups.css' %}"> {% endblock %}
