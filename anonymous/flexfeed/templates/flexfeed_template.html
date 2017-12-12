@@ -36,7 +36,11 @@
           <ul class='nav navbar-nav navbar-right'>
               <li style="padding-top:5px;"><img style="width:40px; height40px; border-radius: 50%;" src="{{user.profile.profile_picture}}"></li>
               <li><a href="{% url 'settings' %}">{{user.get_full_name}}</a></li>
+              {% if emptyPage %}
+                <li><a href="{% url 'login' %}">Log In</a></li>
+              {% else %}
               <li><a href="{% url 'logout' %}">Log Out</a></li>
+              {% endif %}
           </ul>
       </div>
   </nav>
